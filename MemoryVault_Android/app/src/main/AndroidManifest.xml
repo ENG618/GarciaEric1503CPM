@@ -4,39 +4,48 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <application android:allowBackup="true" android:label="@string/app_name"
-        android:icon="@mipmap/ic_launcher" android:theme="@style/AppTheme">
+    <application
+        android:name=".MemoryVaultApplication"
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:theme="@style/AppTheme">
+
+        <!-- Dispatch Activity-->
+        <activity android:name=".DispatchActivity"
+            android:label="@string/dispatch_activity_label"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Parse Login Activity-->
+        <activity
+            android:name="com.parse.ui.ParseLoginActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop">
+            <!-- For more options, see https://www.parse.com/docs/android_guide#ui-login -->
+            <meta-data
+                android:name="com.parse.ui.ParseLoginActivity.PARSE_LOGIN_ENABLED"
+                android:value="true" />
+            <meta-data
+                android:name="com.parse.ui.ParseLoginActivity.PARSE_LOGIN_EMAIL_AS_USERNAME"
+                android:value="true" />
+            <!--<meta-data
+                android:name="com.parse.ui.ParseLoginActivity.FACEBOOK_LOGIN_ENABLED"
+                android:value="true"/>
+            <meta-data
+                android:name="com.parse.ui.ParseLoginActivity.TWITTER_LOGIN_ENABLED"
+                android:value="true"/>-->
+        </activity>
+
+        <!-- Main Activity-->
+        <activity
+            android:name=".main.MemoriesActivity"
+            android:label="@string/app_name">
+        </activity>
 
     </application>
-
-    <!-- Dispatch Activity-->
-    <activity android:name=".DispatchActivity"
-        android:label="@string/dispatch_activity_label"
-        android:launchMode="singleTop">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-
-    <!-- Parse Login Activity-->
-    <activity
-        android:name="com.parse.ui.ParseLoginActivity"
-        android:label="@string/app_name"
-        android:launchMode="singleTop">
-        <!-- For more options, see https://www.parse.com/docs/android_guide#ui-login -->
-        <meta-data
-            android:name="com.parse.ui.ParseLoginActivity.PARSE_LOGIN_ENABLED"
-            android:value="true" />
-        <meta-data
-            android:name="com.parse.ui.ParseLoginActivity.PARSE_LOGIN_EMAIL_AS_USERNAME"
-            android:value="true" />
-        <!--<meta-data
-            android:name="com.parse.ui.ParseLoginActivity.FACEBOOK_LOGIN_ENABLED"
-            android:value="true"/>
-        <meta-data
-            android:name="com.parse.ui.ParseLoginActivity.TWITTER_LOGIN_ENABLED"
-            android:value="true"/>-->
-    </activity>
-
 </manifest>

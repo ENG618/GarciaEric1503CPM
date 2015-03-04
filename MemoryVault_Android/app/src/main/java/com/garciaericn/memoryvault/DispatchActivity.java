@@ -1,5 +1,6 @@
 package com.garciaericn.memoryvault;
 
+import com.garciaericn.memoryvault.main.MemoriesActivity;
 import com.parse.ui.ParseLoginDispatchActivity;
 
 /**
@@ -10,6 +11,6 @@ import com.parse.ui.ParseLoginDispatchActivity;
 public class DispatchActivity extends ParseLoginDispatchActivity {
     @Override
     protected Class<?> getTargetClass() {
-        return null; // Launch main memories activity
+        return MemoriesActivity.class; // Launch main memories activity
     }
 }
