@@ -1,5 +1,5 @@
 # Cross-Platform Mobile Development
-## Eric Garcia
+**Eric Garcia**
 
 Full Sail University
 
