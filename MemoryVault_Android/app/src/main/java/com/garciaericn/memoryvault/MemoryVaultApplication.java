@@ -2,8 +2,10 @@ package com.garciaericn.memoryvault;
 
 import android.app.Application;
 
+import com.garciaericn.memoryvault.data.Memory;
 import com.parse.Parse;
 import com.parse.ParseACL;
+import com.parse.ParseObject;
 
 /**
  * Full Sail University
@@ -14,6 +16,8 @@ public class MemoryVaultApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        ParseObject.registerSubclass(Memory.class);
 
         // Enable Local Datastore.
         Parse.enableLocalDatastore(this);

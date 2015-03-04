@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Memory Vault</string>
+    <!-- Activity Names -->
+    <string name="dispatch_activity_label">Memory Vault</string>
 </resources>
