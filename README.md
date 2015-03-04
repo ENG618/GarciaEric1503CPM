@@ -2,6 +2,7 @@
 **Eric Garcia**  
 Full Sail University  
 Term: 1503  
+
 =====
 
 1. Week 1 - Android: Users & Data
