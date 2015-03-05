@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference
+        android:key="LOG_OUT"
+        android:title="Log out"
+        android:summary="This will log you out of the application"/>
+
+    <Preference
+        android:key="ABOUT"
+        android:title="About"
+        android:summary="Created by: Eric Garcia"
+        android:defaultValue="true" />
+
+</PreferenceScreen>
