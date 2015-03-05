@@ -1,9 +1,9 @@
 package com.garciaericn.memoryvault.main;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 
 import com.garciaericn.memoryvault.R;
 
@@ -17,15 +17,17 @@ public class MemoriesActivity extends ActionBarActivity {
     private Toolbar toolbar;
 
     @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memories);
 
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
+    }
 
-        getFragmentManager().beginTransaction()
-                .replace(R.id.memories_container, MemoriesFragment.newInstance())
-                .commit();
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
 }

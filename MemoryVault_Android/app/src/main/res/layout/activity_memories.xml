@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -7,12 +8,12 @@
         android:id="@+id/app_bar"
         layout="@layout/app_bar" />
 
-    <FrameLayout
-        android:id="@+id/memories_container"
+    <fragment
+        android:id="@+id/memories_fragment"
+        android:name="com.garciaericn.memoryvault.main.MemoriesFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/app_bar">
-
-    </FrameLayout>
+        android:layout_below="@id/app_bar"
+        tools:layout="@layout/fragment_memories" />
 
 </RelativeLayout>
