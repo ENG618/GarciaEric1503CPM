@@ -43,9 +43,6 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
                 Toast.makeText(getActivity(), "You have been logged out", Toast.LENGTH_SHORT).show();
 
                 startActivity(new Intent(getActivity(), DispatchActivity.class));
-
-//                Intent reloadIntent = new Intent(getActivity(), DevicesActivity.class);
-//                startActivity(reloadIntent);
                 return true;
             }
         }
