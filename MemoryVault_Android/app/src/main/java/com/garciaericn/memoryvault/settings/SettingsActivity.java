@@ -1,7 +1,6 @@
 package com.garciaericn.memoryvault.settings;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.ActionBarActivity;
 
 import com.garciaericn.memoryvault.R;
@@ -14,8 +13,8 @@ import com.garciaericn.memoryvault.R;
 public class SettingsActivity extends ActionBarActivity {
 
     @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
         getFragmentManager().beginTransaction()
