@@ -49,6 +49,13 @@
 
         </activity>
 
+        <!-- Add Memory Activity -->
+        <activity
+            android:name=".addMemory.AddMemoryActivity"
+            android:label="@string/activity_add_memory">
+
+        </activity>
+
         <!-- Settings Activity -->
         <activity
             android:name=".settings.SettingsActivity"

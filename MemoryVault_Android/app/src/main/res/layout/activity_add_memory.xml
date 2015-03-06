@@ -9,6 +9,7 @@
         layout="@layout/app_bar" />
 
     <fragment
+        android:id="@+id/add_memory_fragment"
         android:name="com.garciaericn.memoryvault.addMemory.AddMemoryFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
