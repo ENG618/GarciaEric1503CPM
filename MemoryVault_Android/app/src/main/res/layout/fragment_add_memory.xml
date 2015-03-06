@@ -1,11 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="16dp">
 
     <TextView
+        android:id="@+id/add_title_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello from add fragment" />
+        android:layout_marginTop="20dp"
+        android:text="@string/label_title"
+        android:textColor="@color/primary_text" />
+
+    <EditText
+        android:id="@+id/add_title_et"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/add_title_label"
+        android:layout_toEndOf="@+id/add_guests_label"
+        android:layout_toRightOf="@+id/add_guests_label"
+        android:hint="@string/hint_memory_title"
+        android:singleLine="true"
+        android:textColor="@color/primary_text" />
+
+    <TextView
+        android:id="@+id/add_date_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_title_label"
+        android:layout_marginTop="25dp"
+        android:text="@string/label_date"
+        android:textColor="@color/primary_text" />
+
+    <TextView
+        android:id="@+id/add_date_tv"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/add_date_label"
+        android:layout_alignLeft="@+id/add_title_et"
+        android:layout_alignStart="@+id/add_title_et"
+        android:layout_toEndOf="@+id/add_date_label"
+        android:layout_toRightOf="@+id/add_date_label"
+        android:hint="@string/date_placeholder"
+        android:textColor="@color/primary_text" />
+
+    <TextView
+        android:id="@+id/add_guests_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_date_label"
+        android:layout_marginTop="20dp"
+        android:text="@string/label_guests"
+        android:textColor="@color/primary_text" />
+
+    <EditText
+        android:id="@+id/add_guests_et"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/add_guests_label"
+        android:layout_toEndOf="@+id/add_guests_label"
+        android:layout_toRightOf="@id/add_guests_label"
+        android:hint="@string/hint_guest_count"
+        android:inputType="number"
+        android:textColor="@color/primary_text" />
+
+    <TextView
+        android:id="@+id/add_notes_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_guests_label"
+        android:layout_marginTop="20dp"
+        android:text="@string/label_notes"
+        android:textColor="@color/primary_text" />
+
+    <EditText
+        android:id="@+id/add_notes_et"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/add_guests_et"
+        android:layout_alignStart="@+id/add_guests_et"
+        android:layout_alignTop="@+id/add_notes_label"
+        android:hint="@string/hint_notes"
+        android:inputType="textMultiLine"
+        android:textColor="@color/primary_text" />
+
 
 </RelativeLayout>
