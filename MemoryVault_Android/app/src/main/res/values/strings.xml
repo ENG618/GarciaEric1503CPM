@@ -16,4 +16,7 @@
     <string name="hint_guest_count">Number of guests</string>
     <string name="label_notes">Notes:</string>
     <string name="hint_notes">Description of memory...</string>
+    <string name="memory_item_title">Memory Title</string>
+    <string name="memory_item_date">XX/XX/XXXX</string>
+    <string name="memory_item_guests">Guest count</string>
 </resources>

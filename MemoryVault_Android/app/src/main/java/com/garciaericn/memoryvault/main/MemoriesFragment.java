@@ -15,12 +15,10 @@ import com.garciaericn.memoryvault.R;
  */
 public class MemoriesFragment extends Fragment {
 
+
+
     public MemoriesFragment() {
         // Mandatory empty constructor
-    }
-
-    public static MemoriesFragment newInstance() {
-        return new MemoriesFragment();
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.garciaericn.memoryvault.addMemory;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -14,7 +16,7 @@ import com.garciaericn.memoryvault.R;
  * Mobile Development BS
  * Created by ENG618-Mac on 3/6/15.
  */
-public class AddMemoryActivity extends ActionBarActivity {
+public class AddMemoryActivity extends ActionBarActivity implements AddMemoryFragment.AddMemoryInteractionListener{
 
     Toolbar toolbar;
 
@@ -47,5 +49,27 @@ public class AddMemoryActivity extends ActionBarActivity {
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void showAlertDialog(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Something isn't right...")
+                .setMessage(message)
+                .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .create()
+                .show();
+    }
+
+    @Override
+    public void memorySaved() {
+        Intent intent = new Intent();
+        setResult(RESULT_OK, intent);
+        finish();
     }
 }
