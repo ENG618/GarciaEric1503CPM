@@ -29,6 +29,10 @@ public class MemoriesActivity extends ActionBarActivity {
 
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
+
+        getFragmentManager().beginTransaction()
+                .replace(R.id.memories_fragment_container, MemoriesFragment.newInstance())
+                .commit();
     }
 
     @Override

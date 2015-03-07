@@ -1,40 +1,47 @@
 package com.garciaericn.memoryvault.data;
 
-import android.app.Activity;
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import com.garciaericn.memoryvault.R;
-
-import java.util.List;
+import com.parse.ParseQuery;
+import com.parse.ParseQueryAdapter;
 
 /**
  * Full Sail University
  * Mobile Development BS
  * Created by ENG618-Mac on 3/6/15.
  */
-public class MemoryAdapter extends ArrayAdapter<Memory> {
+public class MemoryAdapter extends ParseQueryAdapter<Memory> {
 
-    private List<Memory> objects;
-    private Context context;
+    public MemoryAdapter(Context context) {
+        super(context, new ParseQueryAdapter.QueryFactory<Memory>() {
 
-    public MemoryAdapter(Context context, int resource, List<Memory> objects) {
-        super(context, resource, objects);
-        this.context = context;
-        this.objects = objects;
+            @Override
+            public ParseQuery<Memory> create() {
+                return Memory.getQuery();
+            }
+        });
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+    public View getItemView(Memory object, View v, ViewGroup parent) {
+        if (v == null) {
+            v = View.inflate(getContext(), R.layout.memory_item, null);
+        }
+        super.getItemView(object, v, parent);
 
-        View view = inflater.inflate(R.layout.memory_item, null);
+        TextView titleTV = (TextView) v.findViewById(R.id.item_title);
+        titleTV.setText(object.getTitle());
 
-        // TODO: Setup view
+        TextView dateTV = (TextView) v.findViewById(R.id.item_date);
+        dateTV.setText(object.getDateString());
 
-        return view;
+        TextView guestsTV = (TextView) v.findViewById(R.id.item_guests);
+        guestsTV.setText(String.valueOf(object.getGuests()));
+
+        return v;
     }
 }

@@ -16,10 +16,10 @@ public class Memory extends ParseObject {
     public static final String MEMORIES = "Memories";
     public static final String MEMORY_TAG = "Local memories";
 
-    private static final String TITLE = "Title";
-    private static final String DATE = "Date";
-    private static final String GUESTS = "Guests";
-    private static final String NOTES = "Notes";
+    public static final String TITLE = "Title";
+    public static final String DATE = "Date";
+    public static final String GUESTS = "Guests";
+    public static final String NOTES = "Notes";
 
     public Memory() {
         // Required no arguments constructor
@@ -44,6 +44,15 @@ public class Memory extends ParseObject {
         return getDate(DATE);
     }
 
+    public String getDateString() {
+        Date date = getDate();
+        int year = date.getYear();
+        int month = date.getMonth();
+        int day = date.getDay();
+
+        return String.valueOf(month + 1) + "/" + day + "/" + year;
+    }
+
     public void setDate(Date date) {
         put(DATE, date);
     }
@@ -65,5 +74,9 @@ public class Memory extends ParseObject {
 
     public static ParseQuery<Memory> getQuery() {
         return ParseQuery.getQuery(Memory.class);
+    }
+
+    public String toString() {
+        return getTitle();
     }
 }

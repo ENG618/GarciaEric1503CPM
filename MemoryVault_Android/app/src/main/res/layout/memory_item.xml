@@ -2,7 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp">
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/item_guests"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/memory_item_guests" />
 
     <TextView
         android:id="@+id/item_title"
@@ -25,13 +33,5 @@
         android:layout_toLeftOf="@id/item_guests"
         android:layout_toStartOf="@id/item_guests"
         android:text="@string/memory_item_date" />
-
-    <TextView
-        android:id="@+id/item_guests"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:text="@string/memory_item_guests" />
 
 </RelativeLayout>
