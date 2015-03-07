@@ -19,4 +19,5 @@
     <string name="memory_item_title">Memory Title</string>
     <string name="memory_item_date">XX/XX/XXXX</string>
     <string name="memory_item_guests">Guest count</string>
+    <string name="action_delete">Delete</string>
 </resources>
