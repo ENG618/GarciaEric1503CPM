@@ -5,7 +5,7 @@ Term: 1503
 
 1. Week 1 - Android: Users & Data
   * Project & Walk-through Due March 6th
-  * Video walk-through (To be posted upon completion)
+  * [Video walk-through] (http://youtu.be/SFx1HyIP99M?list=PLuoK7f8KRDtn1fcO73hxMGo85l4JUkYk6)
 
 2. Week 2 - iOS: Users & Data
   * Project & Walk-through Due March 13th
