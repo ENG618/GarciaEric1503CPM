@@ -4,7 +4,7 @@ Full Sail University
 Term: 1503  
 
 1. Week 1 - Android: Users & Data
-  * [Project] (https://github.com/ENG618/GarciaEric1503CPM/tree/master/MemoryVault_Android)
+  * [Project] (https://github.com/ENG618/GarciaEric1503CPM/tree/8bc48b8f8c69ca919ae877a29652afca75adc496)
   * [Video walk-through] (http://youtu.be/SFx1HyIP99M?list=PLuoK7f8KRDtn1fcO73hxMGo85l4JUkYk6 "YouTube")
 
 2. Week 2 - iOS: Users & Data
