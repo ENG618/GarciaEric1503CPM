@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5C22E95E1AACFFFE00C02C7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C22E95D1AACFFFE00C02C7C /* AppDelegate.swift */; };
-		5C22E9601AACFFFE00C02C7C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C22E95F1AACFFFE00C02C7C /* ViewController.swift */; };
 		5C22E9631AACFFFE00C02C7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C22E9611AACFFFE00C02C7C /* Main.storyboard */; };
 		5C22E9651AACFFFE00C02C7C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C22E9641AACFFFE00C02C7C /* Images.xcassets */; };
 		5C22E9681AACFFFE00C02C7C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C22E9661AACFFFE00C02C7C /* LaunchScreen.xib */; };
@@ -32,6 +31,7 @@
 		5C22E99F1AAD580A00C02C7C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C22E99E1AAD580A00C02C7C /* CFNetwork.framework */; };
 		5C22E9A11AAD581000C02C7C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C22E9A01AAD581000C02C7C /* AudioToolbox.framework */; };
 		5C22E9A41AAD585400C02C7C /* MemoryVault.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C22E9A31AAD585400C02C7C /* MemoryVault.m */; };
+		5C22E9A61AAD5D9800C02C7C /* DispatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C22E9A51AAD5D9800C02C7C /* DispatchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +48,6 @@
 		5C22E9581AACFFFE00C02C7C /* MemoryVault_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoryVault_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C22E95C1AACFFFE00C02C7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C22E95D1AACFFFE00C02C7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5C22E95F1AACFFFE00C02C7C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5C22E9621AACFFFE00C02C7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5C22E9641AACFFFE00C02C7C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5C22E9671AACFFFE00C02C7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -75,6 +74,7 @@
 		5C22E9A01AAD581000C02C7C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		5C22E9A21AAD585400C02C7C /* MemoryVault_iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MemoryVault_iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		5C22E9A31AAD585400C02C7C /* MemoryVault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoryVault.m; sourceTree = "<group>"; };
+		5C22E9A51AAD5D9800C02C7C /* DispatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +137,7 @@
 			children = (
 				5C22E95D1AACFFFE00C02C7C /* AppDelegate.swift */,
 				5C22E9A31AAD585400C02C7C /* MemoryVault.m */,
-				5C22E95F1AACFFFE00C02C7C /* ViewController.swift */,
+				5C22E9A51AAD5D9800C02C7C /* DispatchViewController.swift */,
 				5C22E9611AACFFFE00C02C7C /* Main.storyboard */,
 				5C22E9641AACFFFE00C02C7C /* Images.xcassets */,
 				5C22E9661AACFFFE00C02C7C /* LaunchScreen.xib */,
@@ -297,8 +297,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C22E9601AACFFFE00C02C7C /* ViewController.swift in Sources */,
 				5C22E9A41AAD585400C02C7C /* MemoryVault.m in Sources */,
+				5C22E9A61AAD5D9800C02C7C /* DispatchViewController.swift in Sources */,
 				5C22E95E1AACFFFE00C02C7C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
