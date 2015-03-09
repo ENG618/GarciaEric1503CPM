@@ -32,6 +32,7 @@
 		5C22E9A11AAD581000C02C7C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C22E9A01AAD581000C02C7C /* AudioToolbox.framework */; };
 		5C22E9A41AAD585400C02C7C /* MemoryVault.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C22E9A31AAD585400C02C7C /* MemoryVault.m */; };
 		5C22E9A61AAD5D9800C02C7C /* DispatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C22E9A51AAD5D9800C02C7C /* DispatchViewController.swift */; };
+		5C22E9A81AAD6C0900C02C7C /* MemoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C22E9A71AAD6C0900C02C7C /* MemoriesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		5C22E9A21AAD585400C02C7C /* MemoryVault_iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MemoryVault_iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		5C22E9A31AAD585400C02C7C /* MemoryVault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoryVault.m; sourceTree = "<group>"; };
 		5C22E9A51AAD5D9800C02C7C /* DispatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchViewController.swift; sourceTree = "<group>"; };
+		5C22E9A71AAD6C0900C02C7C /* MemoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoriesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				5C22E9661AACFFFE00C02C7C /* LaunchScreen.xib */,
 				5C22E95B1AACFFFE00C02C7C /* Supporting Files */,
 				5C22E9A21AAD585400C02C7C /* MemoryVault_iOS-Bridging-Header.h */,
+				5C22E9A71AAD6C0900C02C7C /* MemoriesViewController.swift */,
 			);
 			path = MemoryVault_iOS;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				5C22E9A41AAD585400C02C7C /* MemoryVault.m in Sources */,
 				5C22E9A61AAD5D9800C02C7C /* DispatchViewController.swift in Sources */,
 				5C22E95E1AACFFFE00C02C7C /* AppDelegate.swift in Sources */,
+				5C22E9A81AAD6C0900C02C7C /* MemoriesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

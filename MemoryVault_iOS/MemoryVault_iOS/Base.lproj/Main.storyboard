@@ -18,17 +18,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="bsx-zG-U85" kind="show" id="HmQ-Vi-4YZ"/>
+                        <segue destination="bsx-zG-U85" kind="show" identifier="memoriesSegue" id="HmQ-Vi-4YZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="692" y="464"/>
         </scene>
-        <!--View Controller-->
+        <!--Memories View Controller-->
         <scene sceneID="dfT-ts-HSH">
             <objects>
-                <viewController id="bsx-zG-U85" sceneMemberID="viewController">
+                <viewController id="bsx-zG-U85" customClass="MemoriesViewController" customModule="MemoryVault_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cvv-hx-Mmq"/>
                         <viewControllerLayoutGuide type="bottom" id="d5u-uk-NVy"/>
@@ -64,6 +64,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NMs-0k-Sg5"/>
+        <segue reference="HmQ-Vi-4YZ"/>
     </inferredMetricsTieBreakers>
 </document>

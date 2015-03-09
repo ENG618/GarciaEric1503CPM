@@ -29,30 +29,25 @@ class DispatchViewController: UIViewController, PFLogInViewControllerDelegate, P
         if currentUser != nil {
             return true // Call segue to MemoriesTVC
         } else {
-            // Show login screen
-            var logInController = PFLogInViewController()
-            
-            logInController.fields = (PFLogInFields.UsernameAndPassword
-                | PFLogInFields.LogInButton
-                | PFLogInFields.SignUpButton
-                | PFLogInFields.PasswordForgotten
-                // | PFLogInFields.Facebook
-                // | PFLogInFields.Twitter
-            )
-            
-            logInController.delegate = self
-            self.presentViewController(logInController, animated:true, completion: nil)
-            return false
+            return false // Show login
         }
     }
     
     func loadMemoriesView() {
         // Call segue for main view
-//        self.performSegueWithIdentifier("tableViewSegue", sender: nil)
+        self.performSegueWithIdentifier("memoriesSegue", sender: nil)
     }
     
     func showSignIn() {
         var logInController = PFLogInViewController()
+        
+        logInController.fields = (PFLogInFields.UsernameAndPassword
+            | PFLogInFields.LogInButton
+            | PFLogInFields.SignUpButton
+            | PFLogInFields.PasswordForgotten
+            // | PFLogInFields.Facebook
+            // | PFLogInFields.Twitter
+        )
         
         logInController.delegate = self
         self.presentViewController(logInController, animated:true, completion: nil)
