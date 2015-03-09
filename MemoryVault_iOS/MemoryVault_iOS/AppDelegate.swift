@@ -16,6 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        Parse.enableLocalDatastore()
+        
+        // Initialize Parse.
+        Parse.setApplicationId("MiZYFPmMpo5lE7mkch6IGYHHd3hYaFz1UOXTMSI0", clientKey: "yzcLFEPJEjua3oIWOjInSq5KRSbIZvsVoEkgFbgm")
+        
+        // Set default ACL to user only access.
+        PFACL.setDefaultACL(PFACL(), withAccessForCurrentUser: true)
+        
         return true
     }
 
