@@ -15,7 +15,7 @@ class DispatchViewController: UIViewController, PFLogInViewControllerDelegate, P
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewDidAppear(animated: Bool) {
         if isSignedIn() {
             loadMemoriesView()
         } else {

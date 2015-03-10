@@ -18,7 +18,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="bsx-zG-U85" kind="show" identifier="memoriesSegue" id="HmQ-Vi-4YZ"/>
+                        <segue destination="SqL-jy-yXs" kind="show" identifier="memoriesSegue" id="99W-5A-4Jo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -63,7 +63,4 @@
             <point key="canvasLocation" x="1458" y="62"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="HmQ-Vi-4YZ"/>
-    </inferredMetricsTieBreakers>
 </document>
