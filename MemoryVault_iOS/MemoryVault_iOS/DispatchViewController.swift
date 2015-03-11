@@ -35,7 +35,8 @@ class DispatchViewController: UIViewController, PFLogInViewControllerDelegate, P
     
     func loadMemoriesView() {
         // Call segue for main view
-        self.performSegueWithIdentifier("memoriesSegue", sender: nil)
+//        self.performSegueWithIdentifier("memoriesSegue", sender: nil)
+        self.performSegueWithIdentifier("memoriesTableViewSegue", sender: nil)
     }
     
     func showSignIn() {

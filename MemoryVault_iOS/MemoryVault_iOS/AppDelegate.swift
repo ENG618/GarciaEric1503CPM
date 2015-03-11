@@ -25,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set default ACL to user only access.
         PFACL.setDefaultACL(PFACL(), withAccessForCurrentUser: true)
         
+        
+//        var controller = PFQueryTableViewController(className: "Memories")
+        
         return true
     }
 
