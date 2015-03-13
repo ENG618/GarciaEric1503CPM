@@ -9,7 +9,38 @@
 import Foundation
 import UIKit
 
-class MemoriesViewController: UIViewController {
+class MemoriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let cellIdentifier = "mem_cell"
+    var memories = [Memory]()
     
+    @IBOutlet var memoriesTableView: UITableView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    //
+    // UITableView Data Source Methotds
+    //
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return memories.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier(self.cellIdentifier, forIndexPath: indexPath) as UITableViewCell
+        
+        return cell
+    }
+    
+    // UITableView Delegat Methods
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        // indexpath is selected row
+    }
 }

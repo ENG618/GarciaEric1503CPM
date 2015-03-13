@@ -35,6 +35,7 @@
 		5C22E9AA1AAFECB800C02C7C /* MemoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C22E9A91AAFECB800C02C7C /* MemoryTableViewCell.swift */; };
 		5C22E9AC1AAFED9400C02C7C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C22E9AB1AAFED9400C02C7C /* SettingsViewController.swift */; };
 		5C22E9AE1AAFF23200C02C7C /* MemoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C22E9AD1AAFF23200C02C7C /* MemoriesTableViewController.swift */; };
+		5C5E66051AB009E3008D8BD3 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E66041AB009E3008D8BD3 /* Memory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		5C22E9A91AAFECB800C02C7C /* MemoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryTableViewCell.swift; sourceTree = "<group>"; };
 		5C22E9AB1AAFED9400C02C7C /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5C22E9AD1AAFF23200C02C7C /* MemoriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoriesTableViewController.swift; sourceTree = "<group>"; };
+		5C5E66041AB009E3008D8BD3 /* Memory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,14 +146,14 @@
 				5C22E95D1AACFFFE00C02C7C /* AppDelegate.swift */,
 				5C22E9A51AAD5D9800C02C7C /* DispatchViewController.swift */,
 				5C22E9611AACFFFE00C02C7C /* Main.storyboard */,
+				5C70C84C1AB28D5600F01616 /* Data */,
 				5C22E9641AACFFFE00C02C7C /* Images.xcassets */,
+				5C70C8491AB28C9900F01616 /* Memories */,
+				5C70C84B1AB28D0500F01616 /* Memories_PFTableView */,
+				5C70C8481AB28C8200F01616 /* Settings */,
 				5C22E9661AACFFFE00C02C7C /* LaunchScreen.xib */,
-				5C22E9AB1AAFED9400C02C7C /* SettingsViewController.swift */,
 				5C22E95B1AACFFFE00C02C7C /* Supporting Files */,
 				5C22E9A21AAD585400C02C7C /* MemoryVault_iOS-Bridging-Header.h */,
-				5C22E9A71AAD6C0900C02C7C /* MemoriesViewController.swift */,
-				5C22E9AD1AAFF23200C02C7C /* MemoriesTableViewController.swift */,
-				5C22E9A91AAFECB800C02C7C /* MemoryTableViewCell.swift */,
 			);
 			path = MemoryVault_iOS;
 			sourceTree = "<group>";
@@ -204,6 +206,39 @@
 				5C22E9811AAD577300C02C7C /* ParseUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5C70C8481AB28C8200F01616 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				5C22E9AB1AAFED9400C02C7C /* SettingsViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		5C70C8491AB28C9900F01616 /* Memories */ = {
+			isa = PBXGroup;
+			children = (
+				5C22E9A71AAD6C0900C02C7C /* MemoriesViewController.swift */,
+			);
+			name = Memories;
+			sourceTree = "<group>";
+		};
+		5C70C84B1AB28D0500F01616 /* Memories_PFTableView */ = {
+			isa = PBXGroup;
+			children = (
+				5C22E9AD1AAFF23200C02C7C /* MemoriesTableViewController.swift */,
+			);
+			name = Memories_PFTableView;
+			sourceTree = "<group>";
+		};
+		5C70C84C1AB28D5600F01616 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				5C5E66041AB009E3008D8BD3 /* Memory.swift */,
+				5C22E9A91AAFECB800C02C7C /* MemoryTableViewCell.swift */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,6 +344,7 @@
 				5C22E9AE1AAFF23200C02C7C /* MemoriesTableViewController.swift in Sources */,
 				5C22E9AA1AAFECB800C02C7C /* MemoryTableViewCell.swift in Sources */,
 				5C22E9A61AAD5D9800C02C7C /* DispatchViewController.swift in Sources */,
+				5C5E66051AB009E3008D8BD3 /* Memory.swift in Sources */,
 				5C22E95E1AACFFFE00C02C7C /* AppDelegate.swift in Sources */,
 				5C22E9AC1AAFED9400C02C7C /* SettingsViewController.swift in Sources */,
 				5C22E9A81AAD6C0900C02C7C /* MemoriesViewController.swift in Sources */,
@@ -518,6 +554,7 @@
 				5C22E9791AACFFFE00C02C7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5C22E97A1AACFFFE00C02C7C /* Build configuration list for PBXNativeTarget "MemoryVault_iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +563,7 @@
 				5C22E97C1AACFFFE00C02C7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
