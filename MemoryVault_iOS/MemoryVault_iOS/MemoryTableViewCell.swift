@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MemoryTableViewCell: PFTableViewCell {
+class MemoryTableViewCell: UITableViewCell {
     
     
     

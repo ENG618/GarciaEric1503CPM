@@ -18,6 +18,31 @@ class MemoriesViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateMemories()
+        
+    }
+    
+    func updateMemories() {
+        var query = PFQuery(className: Memory.MEMORIES)
+        query.findObjectsInBackgroundWithBlock{
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                // The find succeeded.
+                NSLog("Successfully retrieved \(objects.count) scores.")
+                // Do something with the found objects
+                for memory in objects {
+                    var currentMemory: Memory = memory as Memory
+                    NSLog("%@", currentMemory.memoryTitle)
+                    self.memories.append(currentMemory)
+                    //                    NSLog("%@", self.memories!.description)
+                }
+                self.memoriesTableView.reloadData()
+            } else {
+                // Log details of the failure
+                NSLog("Error: %@ %@", error, error.userInfo!)
+            }
+            
+        }
     }
     
     //
@@ -35,10 +60,19 @@ class MemoriesViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier(self.cellIdentifier, forIndexPath: indexPath) as UITableViewCell
         
+        if (memories.count > 0) {
+            var currentMemory: Memory = memories[indexPath.row]
+            
+            cell.textLabel?.text = currentMemory.TITLE
+        }
+        
+        
         return cell
     }
     
+    //
     // UITableView Delegat Methods
+    //
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         // indexpath is selected row
