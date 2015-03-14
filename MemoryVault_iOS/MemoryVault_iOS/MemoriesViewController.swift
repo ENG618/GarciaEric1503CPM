@@ -50,10 +50,9 @@ class MemoriesViewController: UIViewController, UITableViewDelegate, UITableView
             
         }
     }
-    
-    //
-    // UITableView Data Source Methotds
-    //
+}
+
+extension MemoriesViewController {  //UITableView Data Source Methods
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -76,13 +75,13 @@ class MemoriesViewController: UIViewController, UITableViewDelegate, UITableView
             // Date formater
             var formater:NSDateFormatter = NSDateFormatter()
             formater.dateFormat = "MM/dd/yy"
-/*
+            /*
             // Custom cell
             cell.memoryTitle.text = currentMemory.memoryTitle
             
             cell.memoryDate.text = formater.stringFromDate(currentMemory.memoryDate)
             cell.memoryGuests.text = currentMemory.memoryGuestCount
-*/
+            */
             // Standard cell
             cell.textLabel?.text = currentMemory.memoryTitle
             cell.detailTextLabel?.text = formater.stringFromDate(currentMemory.memoryDate)
@@ -91,11 +90,9 @@ class MemoriesViewController: UIViewController, UITableViewDelegate, UITableView
         
         return cell
     }
-    
-    //
-    // UITableView Delegat Methods
-    //
-    
+}
+
+extension MemoriesViewController {
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         // indexpath is selected row
     }
