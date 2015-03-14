@@ -15,5 +15,11 @@ class MemoryViewCell: UITableViewCell {
     @IBOutlet var memoryDate: UILabel!
     @IBOutlet var memoryGuests: UILabel!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
     
+    override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
 }

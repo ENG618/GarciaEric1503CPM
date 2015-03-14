@@ -64,19 +64,28 @@ class MemoriesViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("memoryCell", forIndexPath: indexPath) as MemoryViewCell
+        // Custom cell
+        // var cell = tableView.dequeueReusableCellWithIdentifier("memoryCell", forIndexPath: indexPath) as MemoryViewCell
+        
+        // Standard cell
+        var cell = tableView.dequeueReusableCellWithIdentifier(self.cellIdentifier, forIndexPath: indexPath) as UITableViewCell
         
         if (memories.count > 0) {
             var currentMemory: Memory = memories[indexPath.row]
             
+            // Date formater
+            var formater:NSDateFormatter = NSDateFormatter()
+            formater.dateFormat = "MM/dd/yy"
+/*
+            // Custom cell
             cell.memoryTitle.text = currentMemory.memoryTitle
             
-            var formater:NSDateFormatter = NSDateFormatter()
-            formater.dateFormat = "MM/dd/yyyy"
-            
-            
             cell.memoryDate.text = formater.stringFromDate(currentMemory.memoryDate)
-//            cell.memoryGuests.text = currentMemory.memoryGuestCount
+            cell.memoryGuests.text = currentMemory.memoryGuestCount
+*/
+            // Standard cell
+            cell.textLabel?.text = currentMemory.memoryTitle
+            cell.detailTextLabel?.text = formater.stringFromDate(currentMemory.memoryDate)
         }
         
         
