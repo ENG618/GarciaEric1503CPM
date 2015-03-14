@@ -32,10 +32,11 @@
 		5C22E9A11AAD581000C02C7C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C22E9A01AAD581000C02C7C /* AudioToolbox.framework */; };
 		5C22E9A61AAD5D9800C02C7C /* DispatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C22E9A51AAD5D9800C02C7C /* DispatchViewController.swift */; };
 		5C22E9A81AAD6C0900C02C7C /* MemoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C22E9A71AAD6C0900C02C7C /* MemoriesViewController.swift */; };
-		5C22E9AA1AAFECB800C02C7C /* MemoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C22E9A91AAFECB800C02C7C /* MemoryTableViewCell.swift */; };
 		5C22E9AC1AAFED9400C02C7C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C22E9AB1AAFED9400C02C7C /* SettingsViewController.swift */; };
 		5C22E9AE1AAFF23200C02C7C /* MemoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C22E9AD1AAFF23200C02C7C /* MemoriesTableViewController.swift */; };
 		5C5E66051AB009E3008D8BD3 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E66041AB009E3008D8BD3 /* Memory.swift */; };
+		5CF320AA1AB3CD110031171D /* MemoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CF320A91AB3CD110031171D /* MemoryTableViewCell.xib */; };
+		5CF320AE1AB3CE250031171D /* MemoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF320AD1AB3CE250031171D /* MemoryViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,10 +80,11 @@
 		5C22E9A21AAD585400C02C7C /* MemoryVault_iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MemoryVault_iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		5C22E9A51AAD5D9800C02C7C /* DispatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchViewController.swift; sourceTree = "<group>"; };
 		5C22E9A71AAD6C0900C02C7C /* MemoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoriesViewController.swift; sourceTree = "<group>"; };
-		5C22E9A91AAFECB800C02C7C /* MemoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryTableViewCell.swift; sourceTree = "<group>"; };
 		5C22E9AB1AAFED9400C02C7C /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5C22E9AD1AAFF23200C02C7C /* MemoriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoriesTableViewController.swift; sourceTree = "<group>"; };
 		5C5E66041AB009E3008D8BD3 /* Memory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
+		5CF320A91AB3CD110031171D /* MemoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MemoryTableViewCell.xib; sourceTree = "<group>"; };
+		5CF320AD1AB3CE250031171D /* MemoryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,12 +147,12 @@
 			children = (
 				5C22E95D1AACFFFE00C02C7C /* AppDelegate.swift */,
 				5C22E9A51AAD5D9800C02C7C /* DispatchViewController.swift */,
-				5C22E9611AACFFFE00C02C7C /* Main.storyboard */,
-				5C70C84C1AB28D5600F01616 /* Data */,
-				5C22E9641AACFFFE00C02C7C /* Images.xcassets */,
 				5C70C8491AB28C9900F01616 /* Memories */,
 				5C70C84B1AB28D0500F01616 /* Memories_PFTableView */,
 				5C70C8481AB28C8200F01616 /* Settings */,
+				5C70C84C1AB28D5600F01616 /* Data */,
+				5C22E9611AACFFFE00C02C7C /* Main.storyboard */,
+				5C22E9641AACFFFE00C02C7C /* Images.xcassets */,
 				5C22E9661AACFFFE00C02C7C /* LaunchScreen.xib */,
 				5C22E95B1AACFFFE00C02C7C /* Supporting Files */,
 				5C22E9A21AAD585400C02C7C /* MemoryVault_iOS-Bridging-Header.h */,
@@ -220,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				5C22E9A71AAD6C0900C02C7C /* MemoriesViewController.swift */,
+				5CF320AF1AB3D1180031171D /* Cell */,
 			);
 			name = Memories;
 			sourceTree = "<group>";
@@ -236,9 +239,17 @@
 			isa = PBXGroup;
 			children = (
 				5C5E66041AB009E3008D8BD3 /* Memory.swift */,
-				5C22E9A91AAFECB800C02C7C /* MemoryTableViewCell.swift */,
 			);
 			name = Data;
+			sourceTree = "<group>";
+		};
+		5CF320AF1AB3D1180031171D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5CF320A91AB3CD110031171D /* MemoryTableViewCell.xib */,
+				5CF320AD1AB3CE250031171D /* MemoryViewCell.swift */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +301,7 @@
 				TargetAttributes = {
 					5C22E9571AACFFFE00C02C7C = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 62K9L5MXWH;
 					};
 					5C22E96C1AACFFFE00C02C7C = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -321,6 +333,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CF320AA1AB3CD110031171D /* MemoryTableViewCell.xib in Resources */,
 				5C22E9631AACFFFE00C02C7C /* Main.storyboard in Resources */,
 				5C22E9681AACFFFE00C02C7C /* LaunchScreen.xib in Resources */,
 				5C22E9651AACFFFE00C02C7C /* Images.xcassets in Resources */,
@@ -342,10 +355,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C22E9AE1AAFF23200C02C7C /* MemoriesTableViewController.swift in Sources */,
-				5C22E9AA1AAFECB800C02C7C /* MemoryTableViewCell.swift in Sources */,
 				5C22E9A61AAD5D9800C02C7C /* DispatchViewController.swift in Sources */,
 				5C5E66051AB009E3008D8BD3 /* Memory.swift in Sources */,
 				5C22E95E1AACFFFE00C02C7C /* AppDelegate.swift in Sources */,
+				5CF320AE1AB3CE250031171D /* MemoryViewCell.swift in Sources */,
 				5C22E9AC1AAFED9400C02C7C /* SettingsViewController.swift in Sources */,
 				5C22E9A81AAD6C0900C02C7C /* MemoriesViewController.swift in Sources */,
 			);

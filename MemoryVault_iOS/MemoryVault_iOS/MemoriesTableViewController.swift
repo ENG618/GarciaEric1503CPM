@@ -28,14 +28,4 @@ class MemoriesTableViewController: PFQueryTableViewController {
         var query = PFQuery(className: "Memories")
         return query
     }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        var cell = tableView.dequeueReusableCellWithIdentifier("memoryCell") as MemoryTableViewCell!
-        if cell == nil {
-            //            cell = MemoryTableViewCell(st
-            
-        }
-        return cell
-    }
 }

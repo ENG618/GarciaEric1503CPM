@@ -18,6 +18,13 @@ class MemoriesViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Register custom cell
+        var nib = UINib(nibName: "MemoryViewCell", bundle: nil)
+        memoriesTableView.registerNib(nib, forCellReuseIdentifier: "memoryCell")
+        
+        
+        
         updateMemories()
         
     }
@@ -34,7 +41,6 @@ class MemoriesViewController: UIViewController, UITableViewDelegate, UITableView
                     var currentMemory: Memory = memory as Memory
                     NSLog("%@", currentMemory.memoryTitle)
                     self.memories.append(currentMemory)
-                    //                    NSLog("%@", self.memories!.description)
                 }
                 self.memoriesTableView.reloadData()
             } else {
@@ -58,12 +64,19 @@ class MemoriesViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier(self.cellIdentifier, forIndexPath: indexPath) as UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("memoryCell", forIndexPath: indexPath) as MemoryViewCell
         
         if (memories.count > 0) {
             var currentMemory: Memory = memories[indexPath.row]
             
-            cell.textLabel?.text = currentMemory.TITLE
+            cell.memoryTitle.text = currentMemory.memoryTitle
+            
+            var formater:NSDateFormatter = NSDateFormatter()
+            formater.dateFormat = "MM/dd/yyyy"
+            
+            
+            cell.memoryDate.text = formater.stringFromDate(currentMemory.memoryDate)
+//            cell.memoryGuests.text = currentMemory.memoryGuestCount
         }
         
         

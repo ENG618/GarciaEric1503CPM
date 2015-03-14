@@ -1,0 +1,19 @@
+//
+//  MemoryViewCell.swift
+//  MemoryVault_iOS
+//
+//  Created by Eric Garcia on 3/13/15.
+//  Copyright (c) 2015 Garcia Enterprise. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+class MemoryViewCell: UITableViewCell {
+    
+    @IBOutlet var memoryTitle: UILabel!
+    @IBOutlet var memoryDate: UILabel!
+    @IBOutlet var memoryGuests: UILabel!
+    
+    
+}
