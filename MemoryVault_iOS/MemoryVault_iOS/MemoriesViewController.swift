@@ -50,6 +50,10 @@ class MemoriesViewController: UIViewController, UITableViewDelegate, UITableView
             
         }
     }
+    @IBAction func refreshBtn(sender: AnyObject) {
+        // Refresh data
+        updateMemories()
+    }
 }
 
 extension MemoriesViewController {  //UITableView Data Source Methods

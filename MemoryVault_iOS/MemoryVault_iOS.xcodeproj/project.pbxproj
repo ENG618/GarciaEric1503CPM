@@ -37,6 +37,7 @@
 		5C5E66051AB009E3008D8BD3 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E66041AB009E3008D8BD3 /* Memory.swift */; };
 		5CF320AA1AB3CD110031171D /* MemoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CF320A91AB3CD110031171D /* MemoryTableViewCell.xib */; };
 		5CF320AE1AB3CE250031171D /* MemoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF320AD1AB3CE250031171D /* MemoryViewCell.swift */; };
+		5CF320B11AB3DD920031171D /* AddMemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF320B01AB3DD920031171D /* AddMemoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		5C5E66041AB009E3008D8BD3 /* Memory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 		5CF320A91AB3CD110031171D /* MemoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MemoryTableViewCell.xib; sourceTree = "<group>"; };
 		5CF320AD1AB3CE250031171D /* MemoryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryViewCell.swift; sourceTree = "<group>"; };
+		5CF320B01AB3DD920031171D /* AddMemoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMemoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 				5C22E95D1AACFFFE00C02C7C /* AppDelegate.swift */,
 				5C22E9A51AAD5D9800C02C7C /* DispatchViewController.swift */,
 				5C70C8491AB28C9900F01616 /* Memories */,
+				5CF320B21AB3DD9A0031171D /* AddMemory */,
 				5C70C84B1AB28D0500F01616 /* Memories_PFTableView */,
 				5C70C8481AB28C8200F01616 /* Settings */,
 				5C70C84C1AB28D5600F01616 /* Data */,
@@ -250,6 +253,14 @@
 				5CF320AD1AB3CE250031171D /* MemoryViewCell.swift */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		5CF320B21AB3DD9A0031171D /* AddMemory */ = {
+			isa = PBXGroup;
+			children = (
+				5CF320B01AB3DD920031171D /* AddMemoryViewController.swift */,
+			);
+			name = AddMemory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -355,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C22E9AE1AAFF23200C02C7C /* MemoriesTableViewController.swift in Sources */,
+				5CF320B11AB3DD920031171D /* AddMemoryViewController.swift in Sources */,
 				5C22E9A61AAD5D9800C02C7C /* DispatchViewController.swift in Sources */,
 				5C5E66051AB009E3008D8BD3 /* Memory.swift in Sources */,
 				5C22E95E1AACFFFE00C02C7C /* AppDelegate.swift in Sources */,

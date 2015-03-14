@@ -12,6 +12,7 @@ import UIKit
 class SettingsViewController: UIViewController {
     
     @IBAction func closeBtn(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     @IBAction func signOutBtn(sender: AnyObject) {
         PFUser.logOut()
