@@ -35,7 +35,9 @@ class MemoriesViewController: UIViewController, UITableViewDelegate, UITableView
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
                 // The find succeeded.
-                NSLog("Successfully retrieved \(objects.count) scores.")
+                NSLog("Successfully retrieved \(objects.count) memories.")
+                // Cleasr current list
+                self.memories = [Memory]()
                 // Do something with the found objects
                 for memory in objects {
                     var currentMemory: Memory = memory as Memory
