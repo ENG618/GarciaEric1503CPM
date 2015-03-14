@@ -36,7 +36,7 @@ class Memory: PFObject, PFSubclassing {
             return objectForKey(TITLE) as String
         }
         set {
-            setObject(memoryTitle, forKey: TITLE)
+            setObject(newValue, forKey: TITLE)
         }
     }
     var memoryDate: NSDate {
@@ -44,7 +44,7 @@ class Memory: PFObject, PFSubclassing {
             return objectForKey(DATE) as NSDate
         }
         set {
-            setObject(memoryDate, forKey: DATE)
+            setObject(newValue, forKey: DATE)
         }
     }
     var memoryGuestCount: Int {
@@ -52,7 +52,7 @@ class Memory: PFObject, PFSubclassing {
             return objectForKey(GUESTS) as Int
         }
         set {
-            setObject(memoryGuestCount, forKey: GUESTS)
+            setObject(newValue, forKey: GUESTS)
         }
     }
     var memoryNotes: String {
@@ -60,7 +60,7 @@ class Memory: PFObject, PFSubclassing {
             return objectForKey(NOTES) as String
         }
         set {
-            setObject(memoryNotes, forKey: NOTES)
+            setObject(newValue, forKey: NOTES)
         }
     }
     

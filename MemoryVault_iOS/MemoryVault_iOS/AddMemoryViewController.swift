@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 class AddMemoryViewController: UIViewController {
     
@@ -34,7 +33,28 @@ class AddMemoryViewController: UIViewController {
 
     }
     
+    func getDateFromString(dateString: String) -> NSDate {
+        var formater = NSDateFormatter()
+        formater.dateFormat = "MM/dd/yy"
+        let date = formater.dateFromString(dateString)
+        return date!
+    }
+    
     @IBAction func SaveBtn(sender: UIBarButtonItem) {
+        var newMemory: Memory = Memory()
+        newMemory.memoryTitle = titleTF.text
+        newMemory.memoryDate = getDateFromString(dateTF.text)
+        newMemory.memoryGuestCount = guestsTF.text.toInt()!
+        newMemory.memoryNotes = notesTF.text
+        newMemory.saveInBackgroundWithBlock{
+            (success: Bool, error: NSError!) -> Void in
+            if (success) {
+                self.dismissViewControllerAnimated(true, completion: nil)
+            } else {
+                // Something went wrong
+            }
+        }
+        
     }
     
     @IBAction func cancelBtn(sender: UIBarButtonItem) {
