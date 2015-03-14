@@ -58,7 +58,8 @@ class MemoriesViewController: UIViewController, UITableViewDelegate, UITableView
     }
 }
 
-extension MemoriesViewController {  //UITableView Data Source Methods
+// UITableView Data Source Methods
+extension MemoriesViewController {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -98,8 +99,18 @@ extension MemoriesViewController {  //UITableView Data Source Methods
     }
 }
 
+// UITableView Delegate
 extension MemoriesViewController {
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         // indexpath is selected row
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            var memoryToDelete = self.memories[indexPath.row]
+//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            memoryToDelete.deleteInBackground()
+            updateMemories()
+        }
     }
 }
