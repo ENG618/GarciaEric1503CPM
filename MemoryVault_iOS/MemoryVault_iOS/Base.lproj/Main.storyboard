@@ -92,8 +92,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8yo-9M-nRj">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8yo-9M-nRj">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="430"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="mem_cell" textLabel="5TU-Hc-2Ns" detailTextLabel="8m1-cf-lTL" rowHeight="70" style="IBUITableViewCellStyleSubtitle" id="3Xi-HN-JP2">
@@ -122,35 +122,25 @@
                                     <outlet property="delegate" destination="bsx-zG-U85" id="KIJ-zb-cOH"/>
                                 </connections>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f4L-HR-MEZ">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yxV-z9-NsT">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
-                                    <barButtonItem title="Settings" id="G8W-1S-aCl"/>
+                                    <barButtonItem title="Settings" id="SRJ-ca-5xT">
+                                        <connections>
+                                            <segue destination="D1e-Wh-Iuq" kind="presentation" modalPresentationStyle="pageSheet" id="obg-Yn-hmH"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="f4L-HR-MEZ" secondAttribute="trailing" id="0Zs-PD-lgH"/>
-                            <constraint firstItem="f4L-HR-MEZ" firstAttribute="top" secondItem="lLN-mg-QzD" secondAttribute="top" id="98s-jg-hyi"/>
-                            <constraint firstItem="f4L-HR-MEZ" firstAttribute="top" secondItem="8yo-9M-nRj" secondAttribute="bottom" id="Daq-fV-uf6"/>
-                            <constraint firstItem="f4L-HR-MEZ" firstAttribute="trailing" secondItem="8yo-9M-nRj" secondAttribute="trailing" id="GH2-ei-U1F"/>
-                            <constraint firstItem="8yo-9M-nRj" firstAttribute="leading" secondItem="f4L-HR-MEZ" secondAttribute="leading" id="Lcl-7T-UAJ"/>
-                            <constraint firstItem="8yo-9M-nRj" firstAttribute="top" secondItem="fxv-fE-z8d" secondAttribute="bottom" id="cH6-2I-bI2"/>
-                            <constraint firstItem="8yo-9M-nRj" firstAttribute="leading" secondItem="fBu-ej-An4" secondAttribute="leading" id="ltS-C2-cPR"/>
+                            <constraint firstItem="8yo-9M-nRj" firstAttribute="top" secondItem="fBu-ej-An4" secondAttribute="top" id="9oM-s5-T7U"/>
+                            <constraint firstItem="8yo-9M-nRj" firstAttribute="leading" secondItem="fBu-ej-An4" secondAttribute="leading" id="dmv-Xg-VL2"/>
                         </constraints>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem title="Settings" id="gQq-qb-K4j">
-                            <connections>
-                                <segue destination="D1e-Wh-Iuq" kind="popoverPresentation" popoverAnchorBarButtonItem="gQq-qb-K4j" id="a7g-1H-pih">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="bEQ-2q-Nyb"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="memoriesTableView" destination="8yo-9M-nRj" id="qs9-X2-AXY"/>
                     </connections>
@@ -174,7 +164,11 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eTM-YO-1re">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
-                                    <barButtonItem title="Close" id="EF3-Zf-ZZT"/>
+                                    <barButtonItem title="Close" id="EF3-Zf-ZZT">
+                                        <connections>
+                                            <action selector="closeBtn:" destination="D1e-Wh-Iuq" id="PmU-RI-RkD"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="owC-3j-riI">
@@ -182,6 +176,10 @@
                                 <state key="normal" title="Sign out">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="signOutBtn:" destination="D1e-Wh-Iuq" eventType="touchUpInside" id="RHA-jE-kUX"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="dng-Tx-nex"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -11,7 +11,14 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
+    @IBAction func closeBtn(sender: AnyObject) {
+    }
+    @IBAction func signOutBtn(sender: AnyObject) {
+        PFUser.logOut()
+        var currentUser = PFUser.currentUser()
+    }
     override func viewDidLoad() {
+        super.viewDidLoad()
         // Some code
     }
 }
