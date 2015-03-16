@@ -17,7 +17,6 @@ import android.widget.Toast;
 import com.garciaericn.memoryvault.R;
 import com.garciaericn.memoryvault.data.Memory;
 import com.garciaericn.memoryvault.data.MemoryAdapter;
-import com.parse.DeleteCallback;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 
@@ -108,6 +107,7 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
         switch (item.getItemId()) {
             case R.id.action_delete:
                 Toast.makeText(getActivity(), "Delete!", Toast.LENGTH_SHORT).show();
+                // TODO: Delete item
                 mode.finish(); // Action picked, so close the CAB
                 return true;
         }
@@ -123,12 +123,14 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Memory memory = memoryAdapter.getItem(position);
+        /*// Un-comment to delete item
         memory.deleteInBackground(new DeleteCallback() {
             @Override
             public void done(ParseException e) {
                 refreshMemories();
             }
         });
-        Toast.makeText(getActivity(), memory.toString() + " was deleted", Toast.LENGTH_SHORT).show();
+        */
+        Toast.makeText(getActivity(), memory.toString() + " was tapped", Toast.LENGTH_SHORT).show();
     }
 }

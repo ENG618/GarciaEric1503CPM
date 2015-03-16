@@ -9,7 +9,7 @@ Term: 1503
 
 2. Week 2 - iOS: Users & Data
   * [Project] (https://github.com/ENG618/GarciaEric1503CPM/tree/4a302dbfaacafdb49a1a3bf1683d358df3460c6b)
-  * [Video walk-through](http://youtu.be/4_ST4nQn8pI)
+  * [Video walk-through](http://youtu.be/4_ST4nQn8pI "YouTube")
 
 3. Week 3 - Android: Network & Validation
   * Project & Walk-through Due March 20th
