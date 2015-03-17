@@ -1,6 +1,8 @@
 package com.garciaericn.memoryvault.main;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
@@ -14,11 +16,14 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.GarciaEric.networkcheck.NetworkCheck;
 import com.garciaericn.memoryvault.R;
 import com.garciaericn.memoryvault.data.Memory;
 import com.garciaericn.memoryvault.data.MemoryAdapter;
+import com.parse.DeleteCallback;
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 
 import java.util.List;
 
@@ -58,14 +63,45 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
     }
 
     private void refreshMemories() {
+        NetworkCheck networkCheck = new NetworkCheck();
+        if (networkCheck.check(getActivity())) {
+            Memory.getQuery().findInBackground(new FindCallback<Memory>() {
+                @Override
+                public void done(final List<Memory> memoryList, ParseException e) {
+                    // Remove old cache
+                    Memory.unpinAllInBackground(new DeleteCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            // Save new cache
+                            Memory.pinAllInBackground(Memory.MEMORY_TAG, memoryList);
+                        }
+                    });
+                    memoryAdapter.loadObjects();
+                }
+            });
+        } else {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle("No Available Network!!");
+            builder.setMessage("Memories will by synced with cached data");
+            builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // Load from LocalDataStore
+                    Memory.getQuery().fromLocalDatastore().findInBackground(new FindCallback<Memory>() {
+                        @Override
+                        public void done(List<Memory> memoryList, ParseException e) {
+                            if (e == null) { // No error
 
-        // TODO: Add network check
-        Memory.getQuery().findInBackground(new FindCallback<Memory>() {
-            @Override
-            public void done(List<Memory> memoryList, ParseException e) {
-                memoryAdapter.loadObjects();
-            }
-        });
+                            }
+                        }
+                    });
+                    memoryAdapter.loadObjects();
+                }
+            })
+                    .create()
+                    .show();
+
+        }
     }
 
     @Override
