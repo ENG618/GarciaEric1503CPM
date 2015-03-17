@@ -56,6 +56,7 @@ public class Memory extends ParseObject {
     public void setDate(Date date) {
         put(DATE, date);
     }
+
     public int getGuests() {
         return getInt(GUESTS);
     }
@@ -74,6 +75,12 @@ public class Memory extends ParseObject {
 
     public static ParseQuery<Memory> getQuery() {
         return ParseQuery.getQuery(Memory.class);
+    }
+
+    public static ParseQuery<Memory> getLocalQuery() {
+        ParseQuery<Memory> query = ParseQuery.getQuery(Memory.class);
+        query.fromLocalDatastore();
+        return query;
     }
 
     public String toString() {
