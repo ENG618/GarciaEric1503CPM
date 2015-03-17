@@ -12,6 +12,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.GarciaEric.networkcheck.NetworkCheck;
 import com.garciaericn.memoryvault.R;
 import com.garciaericn.memoryvault.data.Memory;
 
@@ -23,7 +24,7 @@ import java.util.Date;
  * Mobile Development BS
  * Created by ENG618-Mac on 3/6/15.
  */
-public class AddMemoryFragment extends Fragment implements View.OnClickListener, DatePickerDialog.OnDateSetListener{
+public class AddMemoryFragment extends Fragment implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
     private AddMemoryInteractionListener mListener;
     private TextView displayDateTV;
@@ -118,6 +119,7 @@ public class AddMemoryFragment extends Fragment implements View.OnClickListener,
 
     private void saveMemory() {
 
+        // Validate input
         String titleString = titleET.getText().toString();
         if (titleString.isEmpty()) {
             mListener.showAlertDialog("Please enter a Title");
@@ -131,19 +133,40 @@ public class AddMemoryFragment extends Fragment implements View.OnClickListener,
             return;
         }
 
-        String notesString = notesET.getText().toString();
+        NetworkCheck networkCheck = new NetworkCheck();
+        if (networkCheck.check(getActivity())) {
 
-        memory = new Memory();
-        memory.setTitle(titleString);
-        memory.setGuests(numGuests);
-        if (!notesString.isEmpty()) {
-            memory.setNotes(notesString);
+            String notesString = notesET.getText().toString();
+
+            memory = new Memory();
+            memory.setTitle(titleString);
+            memory.setGuests(numGuests);
+            if (!notesString.isEmpty()) {
+                memory.setNotes(notesString);
+            }
+            memory.setDate(getDate());
+            memory.saveInBackground();
+
+            mListener.memorySaved();
+        } else {
+            // No network
+            mListener.showAlertDialog("No network connection!! \n" +
+                    "Memory will be saved locally until network available");
+
+            String notesString = notesET.getText().toString();
+
+            memory = new Memory();
+            memory.setTitle(titleString);
+            memory.setGuests(numGuests);
+            if (!notesString.isEmpty()) {
+                memory.setNotes(notesString);
+            }
+            memory.setDate(getDate());
+            memory.saveEventually();
+
+            mListener.memorySaved();
         }
-        memory.setDate(getDate());
-        memory.saveInBackground();
-//        memory.pinInBackground(Memory.MEMORY_TAG);
 
-        mListener.memorySaved();
     }
 
     @Override
@@ -158,6 +181,7 @@ public class AddMemoryFragment extends Fragment implements View.OnClickListener,
 
     public interface AddMemoryInteractionListener {
         public void showAlertDialog(String message);
+
         public void memorySaved();
     }
 }
