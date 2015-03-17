@@ -16,14 +16,8 @@ import com.parse.ParseQueryAdapter;
  */
 public class MemoryAdapter extends ParseQueryAdapter<Memory> {
 
-    public MemoryAdapter(Context context) {
-        super(context, new ParseQueryAdapter.QueryFactory<Memory>() {
-
-            @Override
-            public ParseQuery<Memory> create() {
-                return Memory.getQuery();
-            }
-        });
+    public MemoryAdapter(Context context, QueryFactory<Memory> queryFactory) {
+        super(context, queryFactory);
     }
 
     @Override

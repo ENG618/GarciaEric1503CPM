@@ -23,7 +23,8 @@ import com.garciaericn.memoryvault.data.MemoryAdapter;
 import com.parse.DeleteCallback;
 import com.parse.FindCallback;
 import com.parse.ParseException;
-import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseQueryAdapter;
 
 import java.util.List;
 
@@ -46,7 +47,16 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
         super.onCreate(savedInstanceState);
 
         setHasOptionsMenu(true);
-        memoryAdapter = new MemoryAdapter(getActivity());
+
+        // Set up the Parse query to use in the adapter
+        ParseQueryAdapter.QueryFactory<Memory> factory = new ParseQueryAdapter.QueryFactory<Memory>() {
+            public ParseQuery<Memory> create() {
+                ParseQuery<Memory> query = Memory.getLocalQuery();
+                return query;
+            }
+        };
+
+        memoryAdapter = new MemoryAdapter(getActivity(), factory);
     }
 
     @Override
@@ -64,7 +74,7 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
 
     private void refreshMemories() {
         NetworkCheck networkCheck = new NetworkCheck();
-        if (networkCheck.check(getActivity())) {
+        if (networkCheck.check(getActivity())) { // Has network available
             Memory.getQuery().findInBackground(new FindCallback<Memory>() {
                 @Override
                 public void done(final List<Memory> memoryList, ParseException e) {
@@ -79,7 +89,7 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
                     memoryAdapter.loadObjects();
                 }
             });
-        } else {
+        } else { // No network connection
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setTitle("No Available Network!!");
             builder.setMessage("Memories will by synced with cached data");
@@ -87,12 +97,10 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     // Load from LocalDataStore
-                    Memory.getQuery().fromLocalDatastore().findInBackground(new FindCallback<Memory>() {
+                    Memory.getLocalQuery().findInBackground(new FindCallback<Memory>() {
                         @Override
                         public void done(List<Memory> memoryList, ParseException e) {
-                            if (e == null) { // No error
 
-                            }
                         }
                     });
                     memoryAdapter.loadObjects();
@@ -161,14 +169,14 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Memory memory = memoryAdapter.getItem(position);
-        /*// Un-comment to delete item
-        memory.deleteInBackground(new DeleteCallback() {
-            @Override
-            public void done(ParseException e) {
-                refreshMemories();
-            }
-        });
-        */
+            /*// Un-comment to delete item
+            memory.deleteInBackground(new DeleteCallback() {
+                @Override
+                public void done(ParseException e) {
+                    refreshMemories();
+                }
+            });
+            */
         Toast.makeText(getActivity(), memory.toString() + " was tapped", Toast.LENGTH_SHORT).show();
     }
 }
