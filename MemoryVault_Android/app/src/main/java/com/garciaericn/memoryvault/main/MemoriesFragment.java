@@ -58,6 +58,8 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
     }
 
     private void refreshMemories() {
+
+        // TODO: Add network check
         Memory.getQuery().findInBackground(new FindCallback<Memory>() {
             @Override
             public void done(List<Memory> memoryList, ParseException e) {

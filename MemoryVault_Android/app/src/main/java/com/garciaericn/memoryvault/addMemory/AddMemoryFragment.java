@@ -1,8 +1,10 @@
 package com.garciaericn.memoryvault.addMemory;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -36,7 +38,7 @@ public class AddMemoryFragment extends Fragment implements View.OnClickListener,
     private int month;
     private int day;
 
-    private Memory memory;
+//    private Memory memory;
     private Date date;
 
     public AddMemoryFragment() {
@@ -119,54 +121,76 @@ public class AddMemoryFragment extends Fragment implements View.OnClickListener,
 
     private void saveMemory() {
 
+        NetworkCheck networkCheck = new NetworkCheck();
+        if (networkCheck.check(getActivity())) { // Has network connection.
+            Memory memory = createMemory();
+            if (memory != null) {
+                memory.saveInBackground();
+            }
+            mListener.memorySaved();
+        } else { // No network
+            if (validateData()) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("No Available Network!!");
+                builder.setMessage("Memory will be saved locally, and synced once a network is available");
+                builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Memory memory = createMemory();
+                        if (memory != null) {
+                            memory.saveEventually();
+                        }
+                        mListener.memorySaved();
+                    }
+                })
+                .create()
+                .show();
+            }
+        }
+    }
+
+    private boolean validateData() {
         // Validate input
+        if (titleET.getText().toString().isEmpty()) {
+            mListener.showAlertDialog("Please enter a Title");
+            return false;
+        }
+        try {
+            Integer.parseInt(guestsET.getText().toString());
+        } catch (NumberFormatException e) {
+            mListener.showAlertDialog("Please enter number of guests");
+            return false;
+        }
+        return true;
+    }
+
+    private Memory createMemory() {
+        // Obtain values
         String titleString = titleET.getText().toString();
+        int numGuests;
+        String notesString = notesET.getText().toString();
+
+
+        // Validate input
         if (titleString.isEmpty()) {
             mListener.showAlertDialog("Please enter a Title");
-            return;
+            return null;
         }
-        int numGuests;
         try {
             numGuests = Integer.parseInt(guestsET.getText().toString());
         } catch (NumberFormatException e) {
             mListener.showAlertDialog("Please enter number of guests");
-            return;
+            return null;
         }
-
-        NetworkCheck networkCheck = new NetworkCheck();
-        if (networkCheck.check(getActivity())) {
-
-            String notesString = notesET.getText().toString();
-
-            memory = new Memory();
-            memory.setTitle(titleString);
-            memory.setGuests(numGuests);
-            if (!notesString.isEmpty()) {
-                memory.setNotes(notesString);
-            }
-            memory.setDate(getDate());
-            memory.saveInBackground();
-
-            mListener.memorySaved();
-        } else {
-            // No network
-            mListener.showAlertDialog("No network connection!! \n" +
-                    "Memory will be saved locally until network available");
-
-            String notesString = notesET.getText().toString();
-
-            memory = new Memory();
-            memory.setTitle(titleString);
-            memory.setGuests(numGuests);
-            if (!notesString.isEmpty()) {
-                memory.setNotes(notesString);
-            }
-            memory.setDate(getDate());
-            memory.saveEventually();
-
-            mListener.memorySaved();
+        Memory memory = new Memory();
+        memory.setTitle(titleString);
+        memory.setGuests(numGuests);
+        if (!notesString.isEmpty()) {
+            memory.setNotes(notesString);
         }
+        memory.setDate(getDate());
 
+        return memory;
     }
 
     @Override
