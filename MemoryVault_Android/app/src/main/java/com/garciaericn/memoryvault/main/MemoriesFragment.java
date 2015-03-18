@@ -169,14 +169,14 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Memory memory = memoryAdapter.getItem(position);
-            /*// Un-comment to delete item
-            memory.deleteInBackground(new DeleteCallback() {
+            // Un-comment to delete item
+            memory.deleteEventually(new DeleteCallback() {
                 @Override
                 public void done(ParseException e) {
-                    refreshMemories();
+                    // Memory was deleted
+                    Toast.makeText(getActivity(), "Deleted memories have been synced", Toast.LENGTH_SHORT).show();
                 }
             });
-            */
-        Toast.makeText(getActivity(), memory.toString() + " was tapped", Toast.LENGTH_SHORT).show();
+        refreshMemories();
     }
 }
