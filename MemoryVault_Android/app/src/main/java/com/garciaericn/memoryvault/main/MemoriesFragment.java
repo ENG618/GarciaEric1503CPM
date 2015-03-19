@@ -48,7 +48,7 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
 
         setHasOptionsMenu(true);
 
-        // Set up the Parse query to use in the adapter
+        // Set up the queryFactory to read from local data.
         ParseQueryAdapter.QueryFactory<Memory> factory = new ParseQueryAdapter.QueryFactory<Memory>() {
             public ParseQuery<Memory> create() {
                 ParseQuery<Memory> query = Memory.getLocalQuery();
@@ -56,6 +56,7 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
             }
         };
 
+        // Create adapter
         memoryAdapter = new MemoryAdapter(getActivity(), factory);
     }
 
@@ -68,6 +69,14 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
         memoriesListView.setOnItemClickListener(this);
         memoriesListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
         memoriesListView.setMultiChoiceModeListener(this);
+        memoriesListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Memory memory = memoryAdapter.getItem(position);
+                deleteMemory(memory);
+                return false;
+            }
+        });
 
         return view;
     }
@@ -153,7 +162,7 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
         switch (item.getItemId()) {
             case R.id.action_delete:
                 Toast.makeText(getActivity(), "Delete!", Toast.LENGTH_SHORT).show();
-                // TODO: Delete item
+                // TODO: Delete selected items
                 mode.finish(); // Action picked, so close the CAB
                 return true;
         }
@@ -168,15 +177,17 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Memory memory = memoryAdapter.getItem(position);
-            // Un-comment to delete item
-            memory.deleteEventually(new DeleteCallback() {
-                @Override
-                public void done(ParseException e) {
-                    // Memory was deleted
-                    Toast.makeText(getActivity(), "Deleted memories have been synced", Toast.LENGTH_SHORT).show();
-                }
-            });
+//        Memory memory = memoryAdapter.getItem(position);
+        // TODO: Send to edit Activity
+    }
+
+    void deleteMemory(Memory memory) {
+        memory.deleteEventually(new DeleteCallback() {
+            @Override
+            public void done(ParseException e) {
+                Toast.makeText(getActivity(), "Deleted memories have been synced", Toast.LENGTH_SHORT).show();
+            }
+        });
         refreshMemories();
     }
 }
