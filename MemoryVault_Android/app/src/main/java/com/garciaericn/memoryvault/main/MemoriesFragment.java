@@ -51,8 +51,7 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
         // Set up the queryFactory to read from local data.
         ParseQueryAdapter.QueryFactory<Memory> factory = new ParseQueryAdapter.QueryFactory<Memory>() {
             public ParseQuery<Memory> create() {
-                ParseQuery<Memory> query = Memory.getLocalQuery();
-                return query;
+                return Memory.getLocalQuery();
             }
         };
 
@@ -79,6 +78,24 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
         });
 
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        refreshMemories();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_sync: {
+                refreshMemories();
+                Toast.makeText(getActivity(), "Refreshed from fragment", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void refreshMemories() {
@@ -121,24 +138,17 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
         }
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
+    void deleteMemory(Memory memory) {
+        memory.deleteEventually(new DeleteCallback() {
+            @Override
+            public void done(ParseException e) {
+                Toast.makeText(getActivity(), "Deleted memories have been synced", Toast.LENGTH_SHORT).show();
+            }
+        });
         refreshMemories();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_sync: {
-                refreshMemories();
-                Toast.makeText(getActivity(), "Refreshed from fragment", Toast.LENGTH_SHORT).show();
-                return true;
-            }
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
+    // AbsListView.MultiChoiceModeListener, AdapterView.OnItemClickListener
     @Override
     public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
         // Here you can do something when items are selected/de-selected,
@@ -179,15 +189,5 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //        Memory memory = memoryAdapter.getItem(position);
         // TODO: Send to edit Activity
-    }
-
-    void deleteMemory(Memory memory) {
-        memory.deleteEventually(new DeleteCallback() {
-            @Override
-            public void done(ParseException e) {
-                Toast.makeText(getActivity(), "Deleted memories have been synced", Toast.LENGTH_SHORT).show();
-            }
-        });
-        refreshMemories();
     }
 }
