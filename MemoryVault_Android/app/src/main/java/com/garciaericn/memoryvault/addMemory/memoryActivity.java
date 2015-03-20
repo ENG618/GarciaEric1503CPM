@@ -16,14 +16,14 @@ import com.garciaericn.memoryvault.R;
  * Mobile Development BS
  * Created by ENG618-Mac on 3/6/15.
  */
-public class AddMemoryActivity extends ActionBarActivity implements AddMemoryFragment.AddMemoryInteractionListener{
+public class memoryActivity extends ActionBarActivity implements memoryFragment.AddMemoryInteractionListener{
 
     Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_memory);
+        setContentView(R.layout.activity_memory);
 
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);

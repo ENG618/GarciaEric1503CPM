@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.garciaericn.memoryvault.R;
-import com.garciaericn.memoryvault.addMemory.AddMemoryActivity;
+import com.garciaericn.memoryvault.addMemory.memoryActivity;
 import com.garciaericn.memoryvault.settings.SettingsActivity;
 
 /**
@@ -45,7 +45,7 @@ public class MemoriesActivity extends ActionBarActivity {
                 return true;
             }
             case R.id.action_add: {
-                Intent addIntent = new Intent(this, AddMemoryActivity.class);
+                Intent addIntent = new Intent(this, memoryActivity.class);
                 startActivityForResult(addIntent, ADD_MEMORY_RC);
                 return true;
             }

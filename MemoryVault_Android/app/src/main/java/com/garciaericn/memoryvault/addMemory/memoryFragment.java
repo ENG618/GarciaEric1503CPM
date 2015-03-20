@@ -26,7 +26,7 @@ import java.util.Date;
  * Mobile Development BS
  * Created by ENG618-Mac on 3/6/15.
  */
-public class AddMemoryFragment extends Fragment implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
+public class memoryFragment extends Fragment implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
     private AddMemoryInteractionListener mListener;
     private TextView displayDateTV;
@@ -41,7 +41,7 @@ public class AddMemoryFragment extends Fragment implements View.OnClickListener,
 //    private Memory memory;
     private Date date;
 
-    public AddMemoryFragment() {
+    public memoryFragment() {
         // Manda
     }
 
@@ -58,7 +58,7 @@ public class AddMemoryFragment extends Fragment implements View.OnClickListener,
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_add_memory, container, false);
+        View view = inflater.inflate(R.layout.fragment_memory, container, false);
 
         displayDateTV = (TextView) view.findViewById(R.id.add_date_tv);
         displayDateTV.setOnClickListener(this);
