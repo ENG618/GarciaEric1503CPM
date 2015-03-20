@@ -51,7 +51,7 @@
 
         <!-- Add Memory Activity -->
         <activity
-            android:name=".addMemory.memoryActivity"
+            android:name=".addMemory.MemoryActivity"
             android:label="@string/activity_add_memory">
 
         </activity>

@@ -16,7 +16,7 @@ import com.garciaericn.memoryvault.R;
  * Mobile Development BS
  * Created by ENG618-Mac on 3/6/15.
  */
-public class memoryActivity extends ActionBarActivity implements memoryFragment.AddMemoryInteractionListener{
+public class MemoryActivity extends ActionBarActivity implements MemoryFragment.AddMemoryInteractionListener{
 
     Toolbar toolbar;
 

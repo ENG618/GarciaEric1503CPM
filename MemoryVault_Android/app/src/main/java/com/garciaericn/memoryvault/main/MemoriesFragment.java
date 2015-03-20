@@ -1,8 +1,10 @@
 package com.garciaericn.memoryvault.main;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
@@ -35,6 +37,7 @@ import java.util.List;
  */
 public class MemoriesFragment extends Fragment implements AbsListView.MultiChoiceModeListener, AdapterView.OnItemClickListener {
 
+    MemoriesInteractionListener mListener;
     ListView memoriesListView;
     MemoryAdapter memoryAdapter;
 
@@ -84,6 +87,22 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
     public void onStart() {
         super.onStart();
         refreshMemories();
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mListener = (MemoriesInteractionListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() + " must implement MemoriesInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
     }
 
     @Override
@@ -187,7 +206,11 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//        Memory memory = memoryAdapter.getItem(position);
-        // TODO: Send to edit Activity
+        Memory memory = memoryAdapter.getItem(position);
+        mListener.editMemory(memory);
+    }
+
+    public interface MemoriesInteractionListener {
+        public void editMemory(Memory memory);
     }
 }
