@@ -28,6 +28,8 @@ import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
 
 import java.util.List;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
 
 /**
  * Full Sail University
@@ -39,6 +41,7 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
     MemoriesInteractionListener mListener;
     ListView memoriesListView;
     MemoryAdapter memoryAdapter;
+    private android.os.Handler mHandler;
 
     public MemoriesFragment() {
         // Mandatory empty constructor
@@ -49,6 +52,7 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
         super.onCreate(savedInstanceState);
 
         setHasOptionsMenu(true);
+        mHandler = new android.os.Handler();
 
         // Set up the queryFactory to read from local data.
         ParseQueryAdapter.QueryFactory<Memory> factory = new ParseQueryAdapter.QueryFactory<Memory>() {
@@ -86,7 +90,17 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
     public void onStart() {
         super.onStart();
         refreshMemories();
+        mSyncTimer.run();
+
     }
+
+    Runnable mSyncTimer = new Runnable() {
+        @Override
+        public void run() {
+            refreshMemories();
+            mHandler.postDelayed(mSyncTimer, 10000);
+        }
+    };
 
     @Override
     public void onAttach(Activity activity) {
@@ -102,6 +116,7 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
     public void onDetach() {
         super.onDetach();
         mListener = null;
+        mHandler.removeCallbacks(mSyncTimer);
     }
 
     @Override

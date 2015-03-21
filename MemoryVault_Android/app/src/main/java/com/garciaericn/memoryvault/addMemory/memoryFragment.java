@@ -41,8 +41,9 @@ public class MemoryFragment extends Fragment implements View.OnClickListener, Da
     private int month;
     private int day;
 
-//    private Memory memory;
+    private Memory memoryToEdit;
     private Date date;
+    private boolean isEditing;
 
     public MemoryFragment() {
         // Mandatory empty constructor
@@ -66,6 +67,8 @@ public class MemoryFragment extends Fragment implements View.OnClickListener, Da
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
 
+        isEditing = false;
+
         Calendar today = Calendar.getInstance();
         year = today.get(Calendar.YEAR);
         month = today.get(Calendar.MONTH);
@@ -81,6 +84,8 @@ public class MemoryFragment extends Fragment implements View.OnClickListener, Da
                     @Override
                     public void done(Memory memory, ParseException e) {
                         if (e == null) {
+                            isEditing = true;
+                            memoryToEdit = memory;
                             if (titleET != null && displayDateTV != null && guestsET != null && notesET != null) {
                                 titleET.setText(memory.getTitle());
                                 displayDateTV.setText(memory.getDateString());
@@ -114,7 +119,11 @@ public class MemoryFragment extends Fragment implements View.OnClickListener, Da
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_save: {
-                saveMemory();
+                if (isEditing) {
+                    saveUpdatedMemory();
+                } else {
+                    saveMemory();
+                }
                 return true;
             }
         }
@@ -187,6 +196,36 @@ public class MemoryFragment extends Fragment implements View.OnClickListener, Da
         }
     }
 
+    private void saveUpdatedMemory() {
+
+        NetworkCheck networkCheck = new NetworkCheck();
+        if (networkCheck.check(getActivity())) { // Has network connection.
+            Memory memory = updateMemory();
+            if (memory != null) {
+                memory.saveInBackground();
+            }
+            mListener.memorySaved();
+        } else { // No network
+            if (validateData()) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("No Available Network!!");
+                builder.setMessage("Memory will be saved locally, and synced once a network is available");
+                builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Memory memory = createMemory();
+                        if (memory != null) {
+                            memory.saveEventually();
+                        }
+                        mListener.memorySaved();
+                    }
+                })
+                        .create()
+                        .show();
+            }
+        }
+    }
+
     private boolean validateData() {
         // Validate input
         if (titleET.getText().toString().isEmpty()) {
@@ -231,6 +270,34 @@ public class MemoryFragment extends Fragment implements View.OnClickListener, Da
         return memory;
     }
 
+    private Memory updateMemory() {
+        // Obtain values
+        String titleString = titleET.getText().toString();
+        int numGuests;
+        String notesString = notesET.getText().toString();
+
+
+        // Validate input
+        if (titleString.isEmpty()) {
+            mListener.showAlertDialog("Please enter a Title");
+            return null;
+        }
+        try {
+            numGuests = Integer.parseInt(guestsET.getText().toString());
+        } catch (NumberFormatException e) {
+            mListener.showAlertDialog("Please enter number of guests");
+            return null;
+        }
+        memoryToEdit.setTitle(titleString);
+        memoryToEdit.setGuests(numGuests);
+        if (!notesString.isEmpty()) {
+            memoryToEdit.setNotes(notesString);
+        }
+        memoryToEdit.setDate(getDate());
+
+        return memoryToEdit;
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -243,7 +310,6 @@ public class MemoryFragment extends Fragment implements View.OnClickListener, Da
 
     public interface AddMemoryInteractionListener {
         public void showAlertDialog(String message);
-
         public void memorySaved();
     }
 }
