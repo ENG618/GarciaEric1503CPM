@@ -36,7 +36,7 @@ import java.util.logging.LogRecord;
  * Mobile Development BS
  * Created by ENG618-Mac on 3/5/15.
  */
-public class MemoriesFragment extends Fragment implements AbsListView.MultiChoiceModeListener, AdapterView.OnItemClickListener {
+public class MemoriesFragment extends Fragment implements /*AbsListView.MultiChoiceModeListener, */ AdapterView.OnItemClickListener {
 
     MemoriesInteractionListener mListener;
     ListView memoriesListView;
@@ -72,14 +72,14 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
         memoriesListView = (ListView) view.findViewById(R.id.listView);
         memoriesListView.setAdapter(memoryAdapter);
         memoriesListView.setOnItemClickListener(this);
-        memoriesListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
-        memoriesListView.setMultiChoiceModeListener(this);
+//        memoriesListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+//        memoriesListView.setMultiChoiceModeListener(this);
         memoriesListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Memory memory = memoryAdapter.getItem(position);
                 deleteMemory(memory);
-                return false;
+                return true;
             }
         });
 
@@ -98,7 +98,7 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
         @Override
         public void run() {
             refreshMemories();
-            mHandler.postDelayed(mSyncTimer, 10000);
+            mHandler.postDelayed(mSyncTimer, 10000); // 10 second delay (10,000)
         }
     };
 
@@ -182,47 +182,47 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
     }
 
     // AbsListView.MultiChoiceModeListener, AdapterView.OnItemClickListener
-    @Override
-    public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
-        // Here you can do something when items are selected/de-selected,
-        // such as update the title in the CAB
-    }
-
-    @Override
-    public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-        MenuInflater inflater = mode.getMenuInflater();
-        inflater.inflate(R.menu.context_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-        return false;
-    }
-
-    @Override
-    public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_delete:
-                Toast.makeText(getActivity(), "Delete!", Toast.LENGTH_SHORT).show();
-                // TODO: Delete selected items
-                mode.finish(); // Action picked, so close the CAB
-                return true;
-        }
-        return false;
-    }
-
-    @Override
-    public void onDestroyActionMode(ActionMode mode) {
-        // Here you can make any necessary updates to the activity when
-        // the CAB is removed. By default, selected items are deselected/unchecked.
-    }
+//    @Override
+//    public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
+//        // Here you can do something when items are selected/de-selected,
+//        // such as update the title in the CAB
+//    }
+//
+//    @Override
+//    public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+//        MenuInflater inflater = mode.getMenuInflater();
+//        inflater.inflate(R.menu.context_menu, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.action_delete:
+//                Toast.makeText(getActivity(), "Delete!", Toast.LENGTH_SHORT).show();
+//                // TODO: Delete selected items
+//                mode.finish(); // Action picked, so close the CAB
+//                return true;
+//        }
+//        return false;
+//    }
+//
+//    @Override
+//    public void onDestroyActionMode(ActionMode mode) {
+//        // Here you can make any necessary updates to the activity when
+//        // the CAB is removed. By default, selected items are deselected/unchecked.
+//    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Memory memory = memoryAdapter.getItem(position);
         mListener.editMemory(memory);
-        Toast.makeText(getActivity(), memory.getObjectId(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(), memory.getObjectId(), Toast.LENGTH_SHORT).show();
     }
 
     public interface MemoriesInteractionListener {
