@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.garciaericn.memoryvault.R;
+import com.garciaericn.memoryvault.data.Memory;
 
 /**
  * Full Sail University
@@ -30,6 +31,19 @@ public class MemoryActivity extends ActionBarActivity implements MemoryFragment.
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //        getSupportActionBar().setHomeAsUpIndicator(R.drawable.);
+
+        if (getIntent().hasExtra(Memory.MEMORY_TAG)) {
+            String memoryId = getIntent().getExtras().getString(Memory.MEMORY_TAG);
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.memory_fragment, MemoryFragment.newInstance(memoryId))
+                    .commit();
+        } else {
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.memory_fragment, MemoryFragment.newInstance(null))
+                    .commit();
+        }
     }
 
     @Override

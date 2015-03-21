@@ -13,8 +13,9 @@ import java.util.Date;
  */
 @ParseClassName("Memories")
 public class Memory extends ParseObject {
-    public static final String MEMORIES = "Memories";
+//    public static final String MEMORIES = "Memories";
     public static final String MEMORY_TAG = "Local memories";
+    public static final String MEMORY_ID = "objectId";
 
     public static final String TITLE = "Title";
     public static final String DATE = "Date";

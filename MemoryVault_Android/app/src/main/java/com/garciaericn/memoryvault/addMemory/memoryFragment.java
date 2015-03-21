@@ -17,6 +17,9 @@ import android.widget.TextView;
 import com.GarciaEric.networkcheck.NetworkCheck;
 import com.garciaericn.memoryvault.R;
 import com.garciaericn.memoryvault.data.Memory;
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -42,7 +45,20 @@ public class MemoryFragment extends Fragment implements View.OnClickListener, Da
     private Date date;
 
     public MemoryFragment() {
-        // Manda
+        // Mandatory empty constructor
+    }
+
+    public static MemoryFragment newInstance(String memoryId) {
+        MemoryFragment memoryFragment = new MemoryFragment();
+
+        if (memoryId != null) {
+            Bundle b = new Bundle();
+            b.putString(Memory.MEMORY_TAG, memoryId);
+            memoryFragment.setArguments(b);
+        }
+
+
+        return memoryFragment;
     }
 
     @Override
@@ -54,6 +70,28 @@ public class MemoryFragment extends Fragment implements View.OnClickListener, Da
         year = today.get(Calendar.YEAR);
         month = today.get(Calendar.MONTH);
         day = today.get(Calendar.DAY_OF_MONTH);
+
+        if (getArguments() != null) {
+            Bundle b = getArguments();
+            String memoryId = b.getString(Memory.MEMORY_TAG);
+            if (memoryId != null) {
+                ParseQuery<Memory> query = Memory.getLocalQuery();
+                query.whereEqualTo(Memory.MEMORY_ID, memoryId);
+                query.getFirstInBackground(new GetCallback<Memory>() {
+                    @Override
+                    public void done(Memory memory, ParseException e) {
+                        if (e == null) {
+                            if (titleET != null && displayDateTV != null && guestsET != null && notesET != null) {
+                                titleET.setText(memory.getTitle());
+                                displayDateTV.setText(memory.getDateString());
+                                guestsET.setText(String.valueOf(memory.getGuests()));
+                                notesET.setText(memory.getNotes());
+                            }
+                        }
+                    }
+                });
+            }
+        }
     }
 
     @Override

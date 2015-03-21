@@ -87,7 +87,7 @@ public class MemoriesActivity extends ActionBarActivity implements MemoriesFragm
     @Override
     public void editMemory(Memory memory) {
         Intent editIntent = new Intent(this, MemoryActivity.class);
-//        editIntent.putExtra(Memory.MEMORY_TAG, memory);
+        editIntent.putExtra(Memory.MEMORY_TAG, memory.getObjectId());
         startActivityForResult(editIntent, EDIT_MEMORY_RC);
     }
 }

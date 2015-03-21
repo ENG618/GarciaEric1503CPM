@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
@@ -208,6 +207,7 @@ public class MemoriesFragment extends Fragment implements AbsListView.MultiChoic
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Memory memory = memoryAdapter.getItem(position);
         mListener.editMemory(memory);
+        Toast.makeText(getActivity(), memory.getObjectId(), Toast.LENGTH_SHORT).show();
     }
 
     public interface MemoriesInteractionListener {
