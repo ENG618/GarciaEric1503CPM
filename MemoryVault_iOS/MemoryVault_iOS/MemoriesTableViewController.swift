@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Garcia Enterprise. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class MemoriesTableViewController: PFQueryTableViewController {

@@ -23,10 +23,10 @@ class MemoriesViewController: UIViewController, UITableViewDelegate, UITableView
         var nib = UINib(nibName: "MemoryViewCell", bundle: nil)
         memoriesTableView.registerNib(nib, forCellReuseIdentifier: "memoryCell")
         
-        
-        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         updateMemories()
-        
     }
     
     func updateMemories() {

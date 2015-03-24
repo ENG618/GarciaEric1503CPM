@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Garcia Enterprise. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-class AddMemoryViewController: UIViewController {
+class MemoryViewController: UIViewController {
     
     @IBOutlet var titleTF: UITextField!
     @IBOutlet var dateTF: UITextField!
