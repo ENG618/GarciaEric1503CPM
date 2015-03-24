@@ -20,11 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.enableLocalDatastore()
         
         /**
-        // Initialize Parse Development
+        // Initialize Parse Production
         Parse.setApplicationId("MiZYFPmMpo5lE7mkch6IGYHHd3hYaFz1UOXTMSI0", clientKey: "yzcLFEPJEjua3oIWOjInSq5KRSbIZvsVoEkgFbgm")
         */
         
-        // Initialize Parse Production
+        // Initialize Parse Development
         Parse.setApplicationId("nDOkjWgJ1Vd7DsubqnaYi16xyQl6TdigrBGk8F4V", clientKey: "VUPexMW9AQUWAeMdynl5TVOOBjGB08q2CjVEL3zu")
         
         // Set default ACL to user only access.

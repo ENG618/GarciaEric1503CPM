@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MemoryViewController: UIViewController {
+class MemoryViewController: UIViewController{
     
     @IBOutlet var titleTF: UITextField!
     @IBOutlet var dateTF: UITextField!
@@ -25,12 +25,12 @@ class MemoryViewController: UIViewController {
         dateTF.text = dateFormatter.stringFromDate(sender.date)
     }
 
+
     @IBAction func showDatePicker(sender: UITextField) {
         var datePickerView  : UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.Date
         sender.inputView = datePickerView
         datePickerView.addTarget(self, action: Selector("handleDatePicker:"), forControlEvents: UIControlEvents.ValueChanged)
-
     }
     
     func getDateFromString(dateString: String) -> NSDate {

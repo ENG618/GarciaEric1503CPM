@@ -165,7 +165,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="showDatePicker:" destination="FdK-vb-7sk" eventType="editingDidEnd" id="0s7-Vr-3xy"/>
+                                    <action selector="showDatePicker:" destination="FdK-vb-7sk" eventType="editingDidBegin" id="Svi-k1-zMz"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guests:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUf-wH-AAb">
