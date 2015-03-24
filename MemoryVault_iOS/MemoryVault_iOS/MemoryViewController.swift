@@ -1,5 +1,5 @@
 //
-//  AddMemoryViewController.swift
+//  MemoryViewController.swift
 //  MemoryVault_iOS
 //
 //  Created by Eric Garcia on 3/13/15.

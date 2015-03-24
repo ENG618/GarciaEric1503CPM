@@ -14,6 +14,8 @@ class MemoriesViewController: UIViewController, UITableViewDelegate, UITableView
     let cellIdentifier = "mem_cell"
     var memories = [Memory]()
     
+    var reachability: Reachability?
+    
     @IBOutlet var memoriesTableView: UITableView!
     
     override func viewDidLoad() {

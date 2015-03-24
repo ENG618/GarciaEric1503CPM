@@ -6,3 +6,4 @@
 #import <ParseUI/ParseUI.h>
 #import <Bolts/Bolts.h>
 #import <Parse/PFobject+Subclass.h>
+#import "Reachability.h"
