@@ -55,14 +55,23 @@ class MemoryViewController: UIViewController{
         newMemory.memoryDate = getDateFromString(dateTF.text)
         newMemory.memoryGuestCount = guestsTF.text.toInt()!
         newMemory.memoryNotes = notesTF.text
-        newMemory.saveInBackgroundWithBlock{
+        newMemory.saveEventually({
             (success: Bool, error: NSError!) -> Void in
             if (success) {
                 self.dismissViewControllerAnimated(true, completion: nil)
             } else {
                 // Something went wrong
             }
-        }
+        })
+        
+//        newMemory.saveInBackgroundWithBlock{
+//            (success: Bool, error: NSError!) -> Void in
+//            if (success) {
+//                self.dismissViewControllerAnimated(true, completion: nil)
+//            } else {
+//                // Something went wrong
+//            }
+//        }
         
     }
     

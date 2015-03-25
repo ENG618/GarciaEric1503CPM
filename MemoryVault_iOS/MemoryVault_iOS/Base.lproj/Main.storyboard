@@ -129,8 +129,8 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7FO-oO-UB8">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
-                                    <navigationItem title="Add Memory" id="iNc-lk-37G">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" systemItem="cancel" id="dNy-rc-wff">
+                                    <navigationItem id="iNc-lk-37G">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="dNy-rc-wff">
                                             <connections>
                                                 <action selector="cancelBtn:" destination="FdK-vb-7sk" id="vgK-U3-phv"/>
                                             </connections>
