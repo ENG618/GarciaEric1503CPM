@@ -35,7 +35,6 @@
 		5C22E9AC1AAFED9400C02C7C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C22E9AB1AAFED9400C02C7C /* SettingsViewController.swift */; };
 		5C5E66051AB009E3008D8BD3 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E66041AB009E3008D8BD3 /* Memory.swift */; };
 		5CC581C91AC20AC80071F35A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC581C81AC20AC80071F35A /* Reachability.m */; };
-		5CC581CB1AC26E3E0071F35A /* MemoryTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC581CA1AC26E3E0071F35A /* MemoryTestViewController.swift */; };
 		5CF320AA1AB3CD110031171D /* MemoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CF320A91AB3CD110031171D /* MemoryTableViewCell.xib */; };
 		5CF320AE1AB3CE250031171D /* MemoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF320AD1AB3CE250031171D /* MemoryViewCell.swift */; };
 		5CF320B11AB3DD920031171D /* MemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF320B01AB3DD920031171D /* MemoryViewController.swift */; };
@@ -86,7 +85,6 @@
 		5C5E66041AB009E3008D8BD3 /* Memory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 		5CC581C71AC20AC80071F35A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		5CC581C81AC20AC80071F35A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		5CC581CA1AC26E3E0071F35A /* MemoryTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryTestViewController.swift; sourceTree = "<group>"; };
 		5CF320A91AB3CD110031171D /* MemoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MemoryTableViewCell.xib; sourceTree = "<group>"; };
 		5CF320AD1AB3CE250031171D /* MemoryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryViewCell.swift; sourceTree = "<group>"; };
 		5CF320B01AB3DD920031171D /* MemoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryViewController.swift; sourceTree = "<group>"; };
@@ -255,7 +253,6 @@
 			isa = PBXGroup;
 			children = (
 				5CF320B01AB3DD920031171D /* MemoryViewController.swift */,
-				5CC581CA1AC26E3E0071F35A /* MemoryTestViewController.swift */,
 			);
 			name = Memory;
 			sourceTree = "<group>";
@@ -365,7 +362,6 @@
 				5CF320B11AB3DD920031171D /* MemoryViewController.swift in Sources */,
 				5C22E9A61AAD5D9800C02C7C /* DispatchViewController.swift in Sources */,
 				5C5E66051AB009E3008D8BD3 /* Memory.swift in Sources */,
-				5CC581CB1AC26E3E0071F35A /* MemoryTestViewController.swift in Sources */,
 				5C22E95E1AACFFFE00C02C7C /* AppDelegate.swift in Sources */,
 				5CF320AE1AB3CE250031171D /* MemoryViewCell.swift in Sources */,
 				5C22E9AC1AAFED9400C02C7C /* SettingsViewController.swift in Sources */,
