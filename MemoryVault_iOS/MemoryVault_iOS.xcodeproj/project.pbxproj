@@ -33,7 +33,6 @@
 		5C22E9A61AAD5D9800C02C7C /* DispatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C22E9A51AAD5D9800C02C7C /* DispatchViewController.swift */; };
 		5C22E9A81AAD6C0900C02C7C /* MemoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C22E9A71AAD6C0900C02C7C /* MemoriesViewController.swift */; };
 		5C22E9AC1AAFED9400C02C7C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C22E9AB1AAFED9400C02C7C /* SettingsViewController.swift */; };
-		5C22E9AE1AAFF23200C02C7C /* MemoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C22E9AD1AAFF23200C02C7C /* MemoriesTableViewController.swift */; };
 		5C5E66051AB009E3008D8BD3 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E66041AB009E3008D8BD3 /* Memory.swift */; };
 		5CC581C91AC20AC80071F35A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC581C81AC20AC80071F35A /* Reachability.m */; };
 		5CF320AA1AB3CD110031171D /* MemoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CF320A91AB3CD110031171D /* MemoryTableViewCell.xib */; };
@@ -83,7 +82,6 @@
 		5C22E9A51AAD5D9800C02C7C /* DispatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchViewController.swift; sourceTree = "<group>"; };
 		5C22E9A71AAD6C0900C02C7C /* MemoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoriesViewController.swift; sourceTree = "<group>"; };
 		5C22E9AB1AAFED9400C02C7C /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		5C22E9AD1AAFF23200C02C7C /* MemoriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoriesTableViewController.swift; sourceTree = "<group>"; };
 		5C5E66041AB009E3008D8BD3 /* Memory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 		5CC581C71AC20AC80071F35A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		5CC581C81AC20AC80071F35A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
@@ -154,7 +152,6 @@
 				5C22E9A51AAD5D9800C02C7C /* DispatchViewController.swift */,
 				5C70C8491AB28C9900F01616 /* Memories */,
 				5CF320B21AB3DD9A0031171D /* Memory */,
-				5C70C84B1AB28D0500F01616 /* Memories_PFTableView */,
 				5C70C8481AB28C8200F01616 /* Settings */,
 				5C70C84C1AB28D5600F01616 /* Data */,
 				5C22E9611AACFFFE00C02C7C /* Main.storyboard */,
@@ -233,14 +230,6 @@
 				5CF320AF1AB3D1180031171D /* Cell */,
 			);
 			name = Memories;
-			sourceTree = "<group>";
-		};
-		5C70C84B1AB28D0500F01616 /* Memories_PFTableView */ = {
-			isa = PBXGroup;
-			children = (
-				5C22E9AD1AAFF23200C02C7C /* MemoriesTableViewController.swift */,
-			);
-			name = Memories_PFTableView;
 			sourceTree = "<group>";
 		};
 		5C70C84C1AB28D5600F01616 /* Data */ = {
@@ -370,7 +359,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C22E9AE1AAFF23200C02C7C /* MemoriesTableViewController.swift in Sources */,
 				5CF320B11AB3DD920031171D /* MemoryViewController.swift in Sources */,
 				5C22E9A61AAD5D9800C02C7C /* DispatchViewController.swift in Sources */,
 				5C5E66051AB009E3008D8BD3 /* Memory.swift in Sources */,
