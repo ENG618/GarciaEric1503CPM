@@ -18,7 +18,6 @@ class Memory: PFObject, PFSubclassing {
     let NOTES = "Notes"
     
     
-    
     var memoryTitle: String {
         get {
             return objectForKey(TITLE) as String
@@ -52,6 +51,16 @@ class Memory: PFObject, PFSubclassing {
         }
     }
     
+    class func memoryQuery() -> PFQuery {
+        let query: PFQuery = PFQuery(className: Memory.parseClassName())
+        return query
+    }
+    
+    class func memoryQueryFromLocal() -> PFQuery {
+        let query: PFQuery = PFQuery(className: Memory.parseClassName())
+        query.fromLocalDatastore()
+        return query
+    }
     
     override class func load() {
         self.registerSubclass()

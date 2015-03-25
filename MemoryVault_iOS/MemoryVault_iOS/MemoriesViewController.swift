@@ -32,11 +32,9 @@ class MemoriesViewController: UIViewController {
     }
     
     func updateMemories() {
-        var query: PFQuery
         if (NetworkValidator.hasConnectivity()){ // Has internet connectivity
             println("Has connectivity")
-            query = PFQuery(className: Memory.parseClassName())
-            query.findObjectsInBackgroundWithBlock{
+            Memory.memoryQuery().findObjectsInBackgroundWithBlock{
                 (objects: [AnyObject]!, error: NSError!) -> Void in
                 if error == nil {
                     // The find succeeded.
@@ -45,9 +43,10 @@ class MemoriesViewController: UIViewController {
                     self.memories = [Memory]()
                     // Do something with the found objects
                     for memory in objects {
-                        var currentMemory: Memory = memory as Memory
+                        let currentMemory: Memory = memory as Memory
                         // println("\(currentMemory.memoryTitle)")
                         self.memories.append(currentMemory)
+                        currentMemory.pinInBackground()
                     }
                     self.memoriesTableView.reloadData()
                 } else {
@@ -57,9 +56,23 @@ class MemoriesViewController: UIViewController {
                 
             }
         } else { // No internet connectivity
+            // TODO: Show alert loading from local data
             println("No connection")
+            Memory.memoryQueryFromLocal().findObjectsInBackgroundWithBlock{
+                (objects: [AnyObject]!, error: NSError!) -> Void in
+                if error == nil { // No error present
+                    // clear current list
+                    self.memories = [Memory]()
+                    // Add returned objects to array
+                    for memory in objects {
+                        let currentMemory: Memory = memory as Memory
+                        self.memories.append(currentMemory)
+                    }
+                }
+            }
         }
     }
+    
     @IBAction func refreshBtn(sender: AnyObject) {
         // Refresh data
         updateMemories()
