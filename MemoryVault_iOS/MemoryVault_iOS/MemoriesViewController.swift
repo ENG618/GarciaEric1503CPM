@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MemoriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MemoriesViewController: UIViewController {
     
     let cellIdentifier = "mem_cell"
     var memories = [Memory]()
@@ -37,13 +37,13 @@ class MemoriesViewController: UIViewController, UITableViewDelegate, UITableView
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
                 // The find succeeded.
-                NSLog("Successfully retrieved \(objects.count) memories.")
+                // NSLog("Successfully retrieved \(objects.count) memories.")
                 // Cleasr current list
                 self.memories = [Memory]()
                 // Do something with the found objects
                 for memory in objects {
                     var currentMemory: Memory = memory as Memory
-                    NSLog("%@", currentMemory.memoryTitle)
+                    // NSLog("%@", currentMemory.memoryTitle)
                     self.memories.append(currentMemory)
                 }
                 self.memoriesTableView.reloadData()
@@ -58,10 +58,26 @@ class MemoriesViewController: UIViewController, UITableViewDelegate, UITableView
         // Refresh data
         updateMemories()
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    /*
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
+    }
+    */
 }
 
-// UITableView Data Source Methods
-extension MemoriesViewController {
+// MARK: UITableView Data Source Methods
+extension MemoriesViewController: UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -101,8 +117,8 @@ extension MemoriesViewController {
     }
 }
 
-// UITableView Delegate
-extension MemoriesViewController {
+// MARK: UITableView Delegate
+extension MemoriesViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         // indexpath is selected row
     }
@@ -110,7 +126,6 @@ extension MemoriesViewController {
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
             var memoryToDelete = self.memories[indexPath.row]
-//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
             memoryToDelete.deleteInBackground()
             updateMemories()
         }
