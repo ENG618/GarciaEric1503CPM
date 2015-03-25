@@ -33,7 +33,7 @@ class MemoriesViewController: UIViewController {
     
     func updateMemories() {
         var query: PFQuery
-        if (hasConnectivity()){ // Has internet connectivity
+        if (NetworkValidator.hasConnectivity()){ // Has internet connectivity
             println("Has connectivity")
             query = PFQuery(className: Memory.MEMORIES)
             query.findObjectsInBackgroundWithBlock{
@@ -70,17 +70,8 @@ class MemoriesViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: Reachability
-    func hasConnectivity() -> Bool {
-        let reachability: Reachability = Reachability.reachabilityForInternetConnection()
-        let networkStatus: Int = reachability.currentReachabilityStatus().value
-        return networkStatus != 0
-    }
-    
-    
-    
     /*
-    // MARK: - Navigation
+// MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
