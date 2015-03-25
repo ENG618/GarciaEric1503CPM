@@ -17,6 +17,16 @@ class MemoryViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Load current date into text field
+        getCurrentDateAsString()
+    }
+    
+    func getCurrentDateAsString(){
+        let dateFormater = NSDateFormatter()
+        dateFormater.dateFormat = "MM/dd/yy"
+        let currentDate = NSDate()
+        dateTF.text = dateFormater.stringFromDate(currentDate)
     }
     
     func handleDatePicker(sender: UIDatePicker) {
@@ -24,7 +34,6 @@ class MemoryViewController: UIViewController{
         dateFormatter.dateFormat = "MM/dd/yy"
         dateTF.text = dateFormatter.stringFromDate(sender.date)
     }
-
 
     @IBAction func showDatePicker(sender: UITextField) {
         var datePickerView  : UIDatePicker = UIDatePicker()
