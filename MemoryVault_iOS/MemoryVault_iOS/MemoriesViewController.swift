@@ -35,7 +35,7 @@ class MemoriesViewController: UIViewController {
         var query: PFQuery
         if (NetworkValidator.hasConnectivity()){ // Has internet connectivity
             println("Has connectivity")
-            query = PFQuery(className: Memory.MEMORIES)
+            query = PFQuery(className: Memory.parseClassName())
             query.findObjectsInBackgroundWithBlock{
                 (objects: [AnyObject]!, error: NSError!) -> Void in
                 if error == nil {

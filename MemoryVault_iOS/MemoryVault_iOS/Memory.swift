@@ -11,18 +11,6 @@ import Foundation
 
 class Memory: PFObject, PFSubclassing {
     
-//    override class func initialize(){
-//        var onceToken: dispatch_once_t = 0
-//        dispatch_once(&onceToken) {
-//            self.registerSubclass()
-//        }
-//    }
-    
-    // Constant for Class name
-    class var MEMORIES: String {
-        return "Memories"
-    }
-    
     // Constatns for row titles
     let TITLE = "Title"
     let DATE = "Date"
