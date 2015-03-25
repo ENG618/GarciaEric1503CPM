@@ -32,26 +32,32 @@ class MemoriesViewController: UIViewController {
     }
     
     func updateMemories() {
-        var query = PFQuery(className: Memory.MEMORIES)
-        query.findObjectsInBackgroundWithBlock{
-            (objects: [AnyObject]!, error: NSError!) -> Void in
-            if error == nil {
-                // The find succeeded.
-                // NSLog("Successfully retrieved \(objects.count) memories.")
-                // Cleasr current list
-                self.memories = [Memory]()
-                // Do something with the found objects
-                for memory in objects {
-                    var currentMemory: Memory = memory as Memory
-                    // NSLog("%@", currentMemory.memoryTitle)
-                    self.memories.append(currentMemory)
+        var query: PFQuery
+        if (hasConnectivity()){ // Has internet connectivity
+            println("Has connectivity")
+            query = PFQuery(className: Memory.MEMORIES)
+            query.findObjectsInBackgroundWithBlock{
+                (objects: [AnyObject]!, error: NSError!) -> Void in
+                if error == nil {
+                    // The find succeeded.
+                    // println("Successfully retrieved \(objects.count) memories.")
+                    // Cleasr current list
+                    self.memories = [Memory]()
+                    // Do something with the found objects
+                    for memory in objects {
+                        var currentMemory: Memory = memory as Memory
+                        // println("\(currentMemory.memoryTitle)")
+                        self.memories.append(currentMemory)
+                    }
+                    self.memoriesTableView.reloadData()
+                } else {
+                    // Log details of the failure
+                    println("Error: \(error) \(error.userInfo)")
                 }
-                self.memoriesTableView.reloadData()
-            } else {
-                // Log details of the failure
-                NSLog("Error: %@ %@", error, error.userInfo!)
+                
             }
-            
+        } else { // No internet connectivity
+            println("No connection")
         }
     }
     @IBAction func refreshBtn(sender: AnyObject) {
@@ -63,6 +69,14 @@ class MemoriesViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: Reachability
+    func hasConnectivity() -> Bool {
+        let reachability: Reachability = Reachability.reachabilityForInternetConnection()
+        let networkStatus: Int = reachability.currentReachabilityStatus().value
+        return networkStatus != 0
+    }
+    
     
     
     /*
