@@ -126,7 +126,7 @@ extension MemoriesViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
             var memoryToDelete = self.memories[indexPath.row]
-            memoryToDelete.deleteInBackground()
+            memoryToDelete.deleteEventually()
             updateMemories()
         }
     }
