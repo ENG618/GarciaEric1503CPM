@@ -24,7 +24,6 @@ class MemoriesViewController: UIViewController {
         // Register custom cell
         var nib = UINib(nibName: "MemoryViewCell", bundle: nil)
         memoriesTableView.registerNib(nib, forCellReuseIdentifier: "memoryCell")
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -44,7 +43,7 @@ class MemoriesViewController: UIViewController {
                     // Do something with the found objects
                     for memory in objects {
                         let currentMemory: Memory = memory as Memory
-                        // println("\(currentMemory.memoryTitle)")
+                        println("\(currentMemory.memoryTitle) from Parse")
                         self.memories.append(currentMemory)
                         currentMemory.pinInBackground()
                     }
@@ -66,6 +65,7 @@ class MemoriesViewController: UIViewController {
                     // Add returned objects to array
                     for memory in objects {
                         let currentMemory: Memory = memory as Memory
+                        println("\(currentMemory.memoryTitle) from localDataStore")
                         self.memories.append(currentMemory)
                     }
                 }
