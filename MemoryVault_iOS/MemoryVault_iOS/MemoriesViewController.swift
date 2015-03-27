@@ -43,10 +43,13 @@ class MemoriesViewController: UIViewController {
                     // Do something with the found objects
                     for memory in objects {
                         let currentMemory: Memory = memory as Memory
-                        println("\(currentMemory.memoryTitle) from Parse")
-                        self.memories.append(currentMemory)
+                        // Save to localDataStore
                         currentMemory.pinInBackground()
+                        println("\(currentMemory.memoryTitle) from Parse")
+                        // Append to current
+                        self.memories.append(currentMemory)
                     }
+                    // Notify tableView to reload data
                     self.memoriesTableView.reloadData()
                 } else {
                     // Log details of the failure
@@ -57,19 +60,35 @@ class MemoriesViewController: UIViewController {
         } else { // No internet connectivity
             // TODO: Show alert loading from local data
             println("No connection")
-            Memory.memoryQueryFromLocal().findObjectsInBackgroundWithBlock{
-                (objects: [AnyObject]!, error: NSError!) -> Void in
-                if error == nil { // No error present
-                    // clear current list
-                    self.memories = [Memory]()
-                    // Add returned objects to array
-                    for memory in objects {
-                        let currentMemory: Memory = memory as Memory
-                        println("\(currentMemory.memoryTitle) from localDataStore")
-                        self.memories.append(currentMemory)
+            
+            // Create Alert
+            var connectionAlert = UIAlertController(title: "No Availity Network!!", message: "Memories will be synced with cached data", preferredStyle: UIAlertControllerStyle.Alert)
+            // Add Okay button
+            connectionAlert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: { action in
+            
+                println("Okay from alert")
+                // Load local query
+                Memory.memoryQueryFromLocal().findObjectsInBackgroundWithBlock{
+                    (objects: [AnyObject]!, error: NSError!) -> Void in
+                    if error == nil { // No error present
+                        // clear current list
+                        self.memories = [Memory]()
+                        // Add returned objects to array
+                        for memory in objects {
+                            let currentMemory: Memory = memory as Memory
+                            println("\(currentMemory.memoryTitle) from localDataStore")
+                            self.memories.append(currentMemory)
+                        }
+                        // Notify tableView to reload data
+                        self.memoriesTableView.reloadData()
+                    } else {
+                        // Log details of the failure
+                        println("Error: \(error) \(error.userInfo)")
                     }
                 }
-            }
+            }))
+            // Present alert
+            self.presentViewController(connectionAlert, animated: true, completion: nil)
         }
     }
     
