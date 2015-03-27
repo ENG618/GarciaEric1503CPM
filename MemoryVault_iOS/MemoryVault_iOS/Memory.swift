@@ -11,11 +11,16 @@ import Foundation
 
 class Memory: PFObject, PFSubclassing {
     
-    // Constatns for row titles
-    let TITLE = "Title"
-    let DATE = "Date"
-    let GUESTS = "Guests"
-    let NOTES = "Notes"
+    // Constants for row titles
+    let TITLE: String = "Title"
+    let DATE: String = "Date"
+    let GUESTS: String = "Guests"
+    let NOTES: String = "Notes"
+    var CREATED_AT: String {
+        get {
+            return "createdAt"
+        }
+    }
     
     
     var memoryTitle: String {
@@ -53,12 +58,14 @@ class Memory: PFObject, PFSubclassing {
     
     class func memoryQuery() -> PFQuery {
         let query: PFQuery = PFQuery(className: Memory.parseClassName())
+        query.orderByDescending("createdAt")
         return query
     }
     
     class func memoryQueryFromLocal() -> PFQuery {
         let query: PFQuery = PFQuery(className: Memory.parseClassName())
         query.fromLocalDatastore()
+        query.orderByDescending("createdAt")
         return query
     }
     
