@@ -34,7 +34,7 @@ class MemoryViewController: UIViewController{
         dateFormatter.dateFormat = "MM/dd/yy"
         dateTF.text = dateFormatter.stringFromDate(sender.date)
     }
-
+    
     @IBAction func showDatePicker(sender: UITextField) {
         var datePickerView  : UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.Date
@@ -50,29 +50,35 @@ class MemoryViewController: UIViewController{
     }
     
     @IBAction func SaveBtn(sender: UIBarButtonItem) {
+        
+        // TODO: Validate memory
         var newMemory: Memory = Memory()
         newMemory.memoryTitle = titleTF.text
         newMemory.memoryDate = getDateFromString(dateTF.text)
         newMemory.memoryGuestCount = guestsTF.text.toInt()!
         newMemory.memoryNotes = notesTF.text
-        newMemory.saveEventually({
-            (success: Bool, error: NSError!) -> Void in
-            if (success) {
-                self.dismissViewControllerAnimated(true, completion: nil)
-            } else {
-                // Something went wrong
+        
+        if (NetworkValidator.hasConnectivity()) {
+            
+            newMemory.saveInBackgroundWithBlock{
+                (success: Bool, error: NSError!) -> Void in
+                if (success) { // Saved successfully
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                } else { // Something went wrong
+                    println("Error: \(error) \(error.userInfo)")
+                }
             }
-        })
-        
-//        newMemory.saveInBackgroundWithBlock{
-//            (success: Bool, error: NSError!) -> Void in
-//            if (success) {
-//                self.dismissViewControllerAnimated(true, completion: nil)
-//            } else {
-//                // Something went wrong
-//            }
-//        }
-        
+        } else { // No network connection
+            newMemory.saveEventually({
+                (success: Bool, error: NSError!) -> Void in
+                if (success) { // Saved successfully
+                    println("\(newMemory) synced online")
+                } else { // Something went wrong
+                    println("Error: \(error) \(error.userInfo)")
+                }
+            })
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func cancelBtn(sender: UIBarButtonItem) {

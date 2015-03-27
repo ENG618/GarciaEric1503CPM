@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Garcia Enterprise. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class MemoriesViewController: UIViewController {
@@ -38,7 +37,7 @@ class MemoriesViewController: UIViewController {
                 if error == nil {
                     // The find succeeded.
                     // println("Successfully retrieved \(objects.count) memories.")
-                    // Cleasr current list
+                    // Clear current list
                     self.memories = [Memory]()
                     // Do something with the found objects
                     for memory in objects {
@@ -62,7 +61,7 @@ class MemoriesViewController: UIViewController {
             println("No connection")
             
             // Create Alert
-            var connectionAlert = UIAlertController(title: "No Availity Network!!", message: "Memories will be synced with cached data", preferredStyle: UIAlertControllerStyle.Alert)
+            var connectionAlert = UIAlertController(title: "No Available Network!!", message: "Memories will be synced with cached data", preferredStyle: UIAlertControllerStyle.Alert)
             // Add Okay button
             connectionAlert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: { action in
             
