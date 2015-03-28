@@ -49,14 +49,37 @@ class MemoryViewController: UIViewController{
         return date!
     }
     
+    func validateMemory() -> Memory {
+        
+        // TODO: Validate memory
+        var validatedMemory: Memory = Memory()
+        
+        if (titleTF.text.isEmpty){
+            showAlert("Please enter a title")
+        } else {
+            validatedMemory.memoryTitle = titleTF.text
+        }
+        validatedMemory.memoryDate = getDateFromString(dateTF.text)
+        if (guestsTF.text.isEmpty) {
+            showAlert("Please enter number of guests")
+        }
+        validatedMemory.memoryGuestCount = guestsTF.text.toInt()!
+        validatedMemory.memoryNotes = notesTF.text
+        
+        return validatedMemory
+    }
+    
+    func showAlert(alertMessage: String) {
+        // Create Alert
+        var connectionAlert = UIAlertController(title: "Something isn't right...", message: alertMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        // Add Okay button
+        connectionAlert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+    }
+    
     @IBAction func SaveBtn(sender: UIBarButtonItem) {
         
         // TODO: Validate memory
-        var newMemory: Memory = Memory()
-        newMemory.memoryTitle = titleTF.text
-        newMemory.memoryDate = getDateFromString(dateTF.text)
-        newMemory.memoryGuestCount = guestsTF.text.toInt()!
-        newMemory.memoryNotes = notesTF.text
+        var newMemory: Memory = validateMemory()
         
         if (NetworkValidator.hasConnectivity()) {
             

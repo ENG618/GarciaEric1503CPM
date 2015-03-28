@@ -58,14 +58,14 @@ class Memory: PFObject, PFSubclassing {
     
     class func memoryQuery() -> PFQuery {
         let query: PFQuery = PFQuery(className: Memory.parseClassName())
-        query.orderByDescending("createdAt")
+        query.orderByDescending("Date")
         return query
     }
     
     class func memoryQueryFromLocal() -> PFQuery {
         let query: PFQuery = PFQuery(className: Memory.parseClassName())
         query.fromLocalDatastore()
-        query.orderByDescending("createdAt")
+        query.orderByDescending("Date")
         return query
     }
     
