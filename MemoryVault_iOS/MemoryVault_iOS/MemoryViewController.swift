@@ -122,12 +122,11 @@ class MemoryViewController: UIViewController{
                 // Show alert
                 presentViewController(connectionAlert, animated: true, completion: nil)
                 
-                self.memoryToEdit?.saveEventually()
-                
                 self.memoryToEdit?.pinInBackgroundWithBlock({
                     (success: Bool, error: NSError!) in
                     if (success) {
                         println("Pinned successfully")
+                        self.memoryToEdit?.saveEventually()
                     } else {
                         println("Error: \(error) \(error.userInfo)")
                     }
