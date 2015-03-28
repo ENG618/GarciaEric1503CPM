@@ -57,7 +57,6 @@ class MemoriesViewController: UIViewController {
                 
             }
         } else { // No internet connectivity
-            // TODO: Show alert loading from local data
             println("No connection")
             
             // Create Alert
