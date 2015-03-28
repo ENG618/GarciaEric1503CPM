@@ -16,5 +16,5 @@ Term: 1503
   * [Video walk-through](http://youtu.be/y7kcD2B3e2o "YouTube")
 
 4. Week 4 - iOS: Network & Validation
-  * Project & Walk-through Due March 26th
-  * Video walk-through (To be posted upon completion)
+  * [Project](https://github.com/ENG618/GarciaEric1503CPM/tree/18be062e83cff1cd6a995809eeb61efb1f29913e)
+  * [Video walk-through](http://youtu.be/fCuY50x7KHY "YouTube")
