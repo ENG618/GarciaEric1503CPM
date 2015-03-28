@@ -65,9 +65,11 @@ class MemoryViewController: UIViewController{
     
     func showAlert(alertMessage: String) {
         // Create Alert
-        var connectionAlert = UIAlertController(title: "Something isn't right...", message: alertMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        var validationAlert = UIAlertController(title: "Something isn't right...", message: alertMessage, preferredStyle: UIAlertControllerStyle.Alert)
         // Add Okay button
-        connectionAlert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+        validationAlert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+        // Present alert
+        self.presentViewController(validationAlert, animated: true, completion: nil)
     }
     
     @IBAction func SaveBtn(sender: UIBarButtonItem) {
@@ -76,7 +78,9 @@ class MemoryViewController: UIViewController{
         // Populate from user input
         newMemory.memoryTitle = titleTF.text
         newMemory.memoryDate = getDateFromString(dateTF.text)
-        newMemory.memoryGuestCount = guestsTF.text.toInt()!
+        if (!guestsTF.text.isEmpty) {
+            newMemory.memoryGuestCount = guestsTF.text.toInt()!
+        }
         newMemory.memoryNotes = notesTF.text
         
         // Check validity
@@ -89,6 +93,7 @@ class MemoryViewController: UIViewController{
                     if (success) { // Saved successfully
                         self.dismissViewControllerAnimated(true, completion: nil)
                         newMemory.pinInBackground()
+                        self.dismissViewControllerAnimated(true, completion: nil)
                     } else { // Something went wrong
                         println("Error: \(error) \(error.userInfo)")
                     }
@@ -103,9 +108,9 @@ class MemoryViewController: UIViewController{
                         println("Error: \(error) \(error.userInfo)")
                     }
                 })
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func cancelBtn(sender: UIBarButtonItem) {
