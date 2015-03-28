@@ -114,15 +114,22 @@ class MemoryViewController: UIViewController{
                     self.dismissViewControllerAnimated(true, completion: nil)
                 })
             } else { // Not network connection
-                memoryToEdit?.pinInBackgroundWithBlock({
-                    (success: Bool, error: NSError!) in
-                    if (success) {
-                        println("Pinned successfully")
-                    } else {
-                        println("Error: \(error) \(error.userInfo)")
-                    }
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                })
+                
+                // Create Alert
+                var connectionAlert = UIAlertController(title: "No Available Network!!", message: "Memory will be saved locally, and synced once a network is available", preferredStyle: UIAlertControllerStyle.Alert)
+                // Add Okay button
+                connectionAlert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: { aciton in
+                    
+                    self.memoryToEdit?.pinInBackgroundWithBlock({
+                        (success: Bool, error: NSError!) in
+                        if (success) {
+                            println("Pinned successfully")
+                        } else {
+                            println("Error: \(error) \(error.userInfo)")
+                        }
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    })
+                }))
             }
         }
     }
@@ -166,24 +173,29 @@ class MemoryViewController: UIViewController{
                         }
                     })
                 } else { // No network connection
-                    // Save to localDataStore
-                    newMemory.pinInBackgroundWithBlock({
-                        (success: Bool, error: NSError!) -> Void in
-                        if (success) {
-                            newMemory.saveEventually({
-                                (success: Bool, error: NSError!) -> Void in
-                                if (success) { // Saved successfully
-                                    println("\(newMemory) synced online")
-                                } else { // Something went wrong
-                                    println("Error: \(error) \(error.userInfo)")
-                                }
-                            })
-                        } else {
-                            println("Error: \(error) \(error.userInfo)")
-                        }
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                    })
-                    
+                    // Create Alert
+                    var connectionAlert = UIAlertController(title: "No Available Network!!", message: "Memory will be saved locally, and synced once a network is available", preferredStyle: UIAlertControllerStyle.Alert)
+                    // Add Okay button
+                    connectionAlert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: { action in
+                        
+                        // Save to localDataStore
+                        newMemory.pinInBackgroundWithBlock({
+                            (success: Bool, error: NSError!) -> Void in
+                            if (success) {
+                                newMemory.saveEventually({
+                                    (success: Bool, error: NSError!) -> Void in
+                                    if (success) { // Saved successfully
+                                        println("\(newMemory) synced online")
+                                    } else { // Something went wrong
+                                        println("Error: \(error) \(error.userInfo)")
+                                    }
+                                })
+                            } else {
+                                println("Error: \(error) \(error.userInfo)")
+                            }
+                            self.dismissViewControllerAnimated(true, completion: nil)
+                        })
+                    }))
                 }
             }
         }
