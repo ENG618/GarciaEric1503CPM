@@ -11,6 +11,7 @@ import UIKit
 class MemoryViewController: UIViewController{
     
     var memorytoEdit : Memory?
+    var isEditing: Bool = false
     
     @IBOutlet var titleTF: UITextField!
     @IBOutlet var dateTF: UITextField!
@@ -21,6 +22,11 @@ class MemoryViewController: UIViewController{
         super.viewDidLoad()
         
         if let currentMemory = memorytoEdit {
+            
+            self.title = "Edit Memory"
+            
+            isEditing = true
+            
             titleTF.text = currentMemory.memoryTitle
             
             let dateFormater = NSDateFormatter()
@@ -29,10 +35,11 @@ class MemoryViewController: UIViewController{
             
             guestsTF.text = String(currentMemory.memoryGuestCount)
             notesTF.text = currentMemory.memoryNotes
+        } else {
+            self.title = "New Memory"
+            // Load current date into text field
+            getCurrentDateAsString()
         }
-        
-        // Load current date into text field
-        getCurrentDateAsString()
     }
     
     func getCurrentDateAsString(){
@@ -87,14 +94,21 @@ class MemoryViewController: UIViewController{
     
     @IBAction func SaveBtn(sender: UIBarButtonItem) {
         
-        if let updatedMemory = memorytoEdit {
-            updatedMemory.memoryTitle = titleTF.text
-            updatedMemory.memoryDate = getDateFromString(dateTF.text)
-            updatedMemory.memoryGuestCount = guestsTF.text.toInt()!
-            updatedMemory.memoryNotes = notesTF.text
+        if (isEditing) {
+            memorytoEdit!.memoryTitle = titleTF.text
+            memorytoEdit!.memoryDate = getDateFromString(dateTF.text)
+            memorytoEdit!.memoryGuestCount = guestsTF.text.toInt()!
+            memorytoEdit!.memoryNotes = notesTF.text
+            memorytoEdit?.pinInBackground()
             
-            updatedMemory.saveInBackground()
-            self.dismissViewControllerAnimated(true, completion: nil)
+            memorytoEdit!.saveInBackgroundWithBlock({
+                (success: Bool, error: NSError!) -> Void in
+                if (success) {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                } else {
+                    println("Error: \(error) \(error.userInfo)")
+                }
+            })
         } else {
             // Create new memory
             var newMemory: Memory = Memory()
