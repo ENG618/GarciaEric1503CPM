@@ -20,6 +20,8 @@ class MemoriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let updateTimer = NSTimer.scheduledTimerWithTimeInterval(15.0, target: self, selector: "updateMemories", userInfo: nil, repeats: true)
+        
         // Register custom cell
         var nib = UINib(nibName: "MemoryViewCell", bundle: nil)
         memoriesTableView.registerNib(nib, forCellReuseIdentifier: "memoryCell")

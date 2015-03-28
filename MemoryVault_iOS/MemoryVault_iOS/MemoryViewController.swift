@@ -118,18 +118,19 @@ class MemoryViewController: UIViewController{
                 // Create Alert
                 var connectionAlert = UIAlertController(title: "No Available Network!!", message: "Memory will be saved locally, and synced once a network is available", preferredStyle: UIAlertControllerStyle.Alert)
                 // Add Okay button
-                connectionAlert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: { aciton in
-                    
-                    self.memoryToEdit?.pinInBackgroundWithBlock({
-                        (success: Bool, error: NSError!) in
-                        if (success) {
-                            println("Pinned successfully")
-                        } else {
-                            println("Error: \(error) \(error.userInfo)")
-                        }
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                    })
-                }))
+                connectionAlert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+                // Show alert
+                presentViewController(connectionAlert, animated: true, completion: nil)
+                
+                self.memoryToEdit?.pinInBackgroundWithBlock({
+                    (success: Bool, error: NSError!) in
+                    if (success) {
+                        println("Pinned successfully")
+                    } else {
+                        println("Error: \(error) \(error.userInfo)")
+                    }
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                })
             }
         }
     }
@@ -196,6 +197,7 @@ class MemoryViewController: UIViewController{
                             self.dismissViewControllerAnimated(true, completion: nil)
                         })
                     }))
+                    presentViewController(connectionAlert, animated: true, completion: nil)
                 }
             }
         }
