@@ -27,7 +27,7 @@
             </objects>
             <point key="canvasLocation" x="692" y="463.99999999999994"/>
         </scene>
-        <!--Memories View Controller-->
+        <!--Memory Vault-->
         <scene sceneID="dfT-ts-HSH">
             <objects>
                 <viewController id="bsx-zG-U85" customClass="MemoriesViewController" customModule="MemoryVault_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -90,20 +90,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="8yo-9M-nRj" firstAttribute="trailing" secondItem="yxV-z9-NsT" secondAttribute="trailing" id="3Wb-oa-5YU"/>
-                            <constraint firstItem="yxV-z9-NsT" firstAttribute="top" secondItem="8yo-9M-nRj" secondAttribute="bottom" id="G5e-ga-M06"/>
-                            <constraint firstAttribute="trailing" secondItem="yxV-z9-NsT" secondAttribute="trailing" id="H8G-jT-zGz"/>
-                            <constraint firstItem="8yo-9M-nRj" firstAttribute="leading" secondItem="fBu-ej-An4" secondAttribute="leading" id="I0J-pY-Vmu"/>
-                            <constraint firstItem="yxV-z9-NsT" firstAttribute="bottom" secondItem="lLN-mg-QzD" secondAttribute="top" id="WBn-Rz-J8F"/>
-                            <constraint firstItem="yxV-z9-NsT" firstAttribute="leading" secondItem="8yo-9M-nRj" secondAttribute="leading" id="XoP-gi-DVA"/>
-                            <constraint firstItem="8yo-9M-nRj" firstAttribute="top" secondItem="fBu-ej-An4" secondAttribute="top" id="lbr-7M-YfV"/>
+                            <constraint firstAttribute="trailing" secondItem="yxV-z9-NsT" secondAttribute="trailing" id="7UC-W2-AY7"/>
+                            <constraint firstItem="8yo-9M-nRj" firstAttribute="trailing" secondItem="yxV-z9-NsT" secondAttribute="trailing" id="bzB-x2-l5d"/>
+                            <constraint firstItem="8yo-9M-nRj" firstAttribute="top" secondItem="fBu-ej-An4" secondAttribute="top" id="fvh-mO-SkM"/>
+                            <constraint firstItem="yxV-z9-NsT" firstAttribute="leading" secondItem="8yo-9M-nRj" secondAttribute="leading" id="nAS-iR-1xJ"/>
+                            <constraint firstItem="yxV-z9-NsT" firstAttribute="bottom" secondItem="lLN-mg-QzD" secondAttribute="top" id="v1A-LM-Wmr"/>
+                            <constraint firstItem="yxV-z9-NsT" firstAttribute="leading" secondItem="fBu-ej-An4" secondAttribute="leading" id="ymy-Eg-8Wr"/>
+                            <constraint firstItem="yxV-z9-NsT" firstAttribute="top" secondItem="8yo-9M-nRj" secondAttribute="bottom" id="zlj-88-Re7"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="bEQ-2q-Nyb">
+                    <navigationItem key="navigationItem" title="Memory Vault" id="bEQ-2q-Nyb">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="1h1-Hp-d6O">
                             <connections>
-                                <segue destination="FdK-vb-7sk" kind="presentation" id="q4w-bY-LVw"/>
+                                <segue destination="FdK-vb-7sk" kind="presentation" modalPresentationStyle="formSheet" id="q4w-bY-LVw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -115,9 +115,10 @@
             </objects>
             <point key="canvasLocation" x="2227" y="463"/>
         </scene>
-        <!--Memory View Controller-->
+        <!--New Memory-->
         <scene sceneID="dsF-yb-h7W">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mh2-66-pe1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="FdK-vb-7sk" customClass="MemoryViewController" customModule="MemoryVault_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jj3-R7-GM2"/>
@@ -127,23 +128,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7FO-oO-UB8">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <items>
-                                    <navigationItem id="iNc-lk-37G">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="dNy-rc-wff">
-                                            <connections>
-                                                <action selector="cancelBtn:" destination="FdK-vb-7sk" id="vgK-U3-phv"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="2Ex-Im-Iof">
-                                            <connections>
-                                                <action selector="SaveBtn:" destination="FdK-vb-7sk" id="xbH-ak-xbP"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iIF-95-0rU">
                                 <rect key="frame" x="16" y="92" width="37" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -191,35 +175,57 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1kb-OS-JKc">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="New Memory" id="JCV-X8-A49">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="BNf-GQ-GvU">
+                                            <connections>
+                                                <action selector="cancelBtn:" destination="FdK-vb-7sk" id="pwJ-GH-Jfk"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="apm-hV-HGK">
+                                            <connections>
+                                                <action selector="SaveBtn:" destination="FdK-vb-7sk" id="mRz-iM-Stp"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7FO-oO-UB8" firstAttribute="leading" secondItem="oAE-Gh-7RO" secondAttribute="leading" id="2HD-wO-Qs0"/>
-                            <constraint firstItem="7FO-oO-UB8" firstAttribute="top" secondItem="jj3-R7-GM2" secondAttribute="bottom" id="4xA-IH-Wlg"/>
-                            <constraint firstItem="m3K-i8-pQR" firstAttribute="top" secondItem="Mab-Ej-t0v" secondAttribute="top" id="6Zh-yX-xpi"/>
-                            <constraint firstItem="si0-KR-kPr" firstAttribute="leading" secondItem="HUf-wH-AAb" secondAttribute="leading" id="BRN-Zz-eCq"/>
-                            <constraint firstItem="j8Z-xg-vgp" firstAttribute="top" secondItem="UYb-fn-pyO" secondAttribute="bottom" constant="8" symbolic="YES" id="DEp-jK-K6A"/>
-                            <constraint firstItem="La2-c3-UUr" firstAttribute="leading" secondItem="m3K-i8-pQR" secondAttribute="leading" id="HS6-U2-egf"/>
-                            <constraint firstItem="UYb-fn-pyO" firstAttribute="leading" secondItem="j8Z-xg-vgp" secondAttribute="leading" id="MhV-12-whI"/>
-                            <constraint firstAttribute="trailing" secondItem="7FO-oO-UB8" secondAttribute="trailing" id="NT8-xf-kU2"/>
-                            <constraint firstItem="La2-c3-UUr" firstAttribute="leading" secondItem="HUf-wH-AAb" secondAttribute="trailing" constant="8" symbolic="YES" id="Nfe-KO-48S"/>
-                            <constraint firstItem="iIF-95-0rU" firstAttribute="leading" secondItem="oAE-Gh-7RO" secondAttribute="leadingMargin" id="RS4-Gu-Anr"/>
-                            <constraint firstItem="Mab-Ej-t0v" firstAttribute="top" secondItem="HUf-wH-AAb" secondAttribute="bottom" constant="22" id="S49-vw-lch"/>
-                            <constraint firstItem="si0-KR-kPr" firstAttribute="leading" secondItem="iIF-95-0rU" secondAttribute="leading" id="YZ1-Jg-Yjj"/>
-                            <constraint firstItem="HUf-wH-AAb" firstAttribute="top" secondItem="si0-KR-kPr" secondAttribute="bottom" constant="17" id="cVP-UE-5wb"/>
-                            <constraint firstItem="La2-c3-UUr" firstAttribute="trailing" secondItem="j8Z-xg-vgp" secondAttribute="trailing" id="dqC-AE-7D4"/>
-                            <constraint firstItem="HUf-wH-AAb" firstAttribute="leading" secondItem="Mab-Ej-t0v" secondAttribute="leading" id="hLJ-mI-1uZ"/>
-                            <constraint firstItem="m3K-i8-pQR" firstAttribute="trailing" secondItem="oAE-Gh-7RO" secondAttribute="trailingMargin" id="jTP-41-wUs"/>
-                            <constraint firstItem="si0-KR-kPr" firstAttribute="top" secondItem="iIF-95-0rU" secondAttribute="bottom" constant="17" id="oy3-Bp-oN5"/>
-                            <constraint firstItem="m3K-i8-pQR" firstAttribute="top" secondItem="La2-c3-UUr" secondAttribute="bottom" constant="17" id="qTP-Nv-3rF"/>
-                            <constraint firstItem="UYb-fn-pyO" firstAttribute="top" secondItem="7FO-oO-UB8" secondAttribute="bottom" constant="24" id="rJq-c6-iDo"/>
-                            <constraint firstItem="La2-c3-UUr" firstAttribute="top" secondItem="j8Z-xg-vgp" secondAttribute="bottom" constant="8" symbolic="YES" id="rTW-Zb-FcG"/>
-                            <constraint firstAttribute="bottom" secondItem="m3K-i8-pQR" secondAttribute="bottom" constant="20" symbolic="YES" id="tKq-1a-RHt"/>
-                            <constraint firstItem="j8Z-xg-vgp" firstAttribute="leading" secondItem="La2-c3-UUr" secondAttribute="leading" id="x91-jC-mIG"/>
-                            <constraint firstItem="m3K-i8-pQR" firstAttribute="trailing" secondItem="La2-c3-UUr" secondAttribute="trailing" id="xQX-CC-G30"/>
-                            <constraint firstItem="UYb-fn-pyO" firstAttribute="trailing" secondItem="j8Z-xg-vgp" secondAttribute="trailing" id="zcD-Ur-XmT"/>
+                            <constraint firstItem="UYb-fn-pyO" firstAttribute="top" secondItem="1kb-OS-JKc" secondAttribute="bottom" constant="44" id="1PZ-o2-NYC"/>
+                            <constraint firstItem="HUf-wH-AAb" firstAttribute="leading" secondItem="Mab-Ej-t0v" secondAttribute="leading" id="7Xd-He-FBY"/>
+                            <constraint firstItem="HUf-wH-AAb" firstAttribute="top" secondItem="si0-KR-kPr" secondAttribute="bottom" constant="17" id="9Rr-kr-11b"/>
+                            <constraint firstItem="si0-KR-kPr" firstAttribute="leading" secondItem="HUf-wH-AAb" secondAttribute="leading" id="AUc-BL-DoG"/>
+                            <constraint firstAttribute="trailing" secondItem="1kb-OS-JKc" secondAttribute="trailing" id="Bh9-EE-0ae"/>
+                            <constraint firstAttribute="bottom" secondItem="m3K-i8-pQR" secondAttribute="bottom" constant="20" symbolic="YES" id="BxG-b8-nZE"/>
+                            <constraint firstItem="iIF-95-0rU" firstAttribute="leading" secondItem="si0-KR-kPr" secondAttribute="leading" id="FcH-y8-o53"/>
+                            <constraint firstItem="si0-KR-kPr" firstAttribute="leading" secondItem="oAE-Gh-7RO" secondAttribute="leadingMargin" id="Fid-Mu-gvG"/>
+                            <constraint firstItem="Mab-Ej-t0v" firstAttribute="top" secondItem="HUf-wH-AAb" secondAttribute="bottom" constant="22" id="OxO-v3-qtq"/>
+                            <constraint firstItem="La2-c3-UUr" firstAttribute="top" secondItem="j8Z-xg-vgp" secondAttribute="bottom" constant="8" symbolic="YES" id="PLk-OB-Zk9"/>
+                            <constraint firstItem="1kb-OS-JKc" firstAttribute="top" secondItem="jj3-R7-GM2" secondAttribute="bottom" id="Uma-i2-w8z"/>
+                            <constraint firstItem="j8Z-xg-vgp" firstAttribute="top" secondItem="UYb-fn-pyO" secondAttribute="bottom" constant="8" symbolic="YES" id="W2R-kA-9pe"/>
+                            <constraint firstItem="m3K-i8-pQR" firstAttribute="top" secondItem="La2-c3-UUr" secondAttribute="bottom" constant="17" id="WWs-nl-GZn"/>
+                            <constraint firstItem="1kb-OS-JKc" firstAttribute="leading" secondItem="oAE-Gh-7RO" secondAttribute="leading" id="X6q-Tb-pI5"/>
+                            <constraint firstItem="La2-c3-UUr" firstAttribute="leading" secondItem="HUf-wH-AAb" secondAttribute="trailing" constant="8" symbolic="YES" id="b27-CG-jsx"/>
+                            <constraint firstItem="m3K-i8-pQR" firstAttribute="trailing" secondItem="La2-c3-UUr" secondAttribute="trailing" id="c5f-30-7sT"/>
+                            <constraint firstItem="si0-KR-kPr" firstAttribute="top" secondItem="iIF-95-0rU" secondAttribute="bottom" constant="17" id="cC0-P4-2Fd"/>
+                            <constraint firstItem="j8Z-xg-vgp" firstAttribute="leading" secondItem="La2-c3-UUr" secondAttribute="leading" id="dfr-rQ-6bv"/>
+                            <constraint firstItem="m3K-i8-pQR" firstAttribute="trailing" secondItem="oAE-Gh-7RO" secondAttribute="trailingMargin" id="duX-ZB-mVM"/>
+                            <constraint firstItem="m3K-i8-pQR" firstAttribute="top" secondItem="Mab-Ej-t0v" secondAttribute="top" id="j0J-sh-Zqh"/>
+                            <constraint firstItem="UYb-fn-pyO" firstAttribute="leading" secondItem="j8Z-xg-vgp" secondAttribute="leading" id="mdN-8m-Yhv"/>
+                            <constraint firstItem="j8Z-xg-vgp" firstAttribute="trailing" secondItem="UYb-fn-pyO" secondAttribute="trailing" id="obf-GH-SId"/>
+                            <constraint firstItem="La2-c3-UUr" firstAttribute="leading" secondItem="m3K-i8-pQR" secondAttribute="leading" id="rxk-2o-iGQ"/>
+                            <constraint firstItem="La2-c3-UUr" firstAttribute="trailing" secondItem="j8Z-xg-vgp" secondAttribute="trailing" id="xek-jT-O1n"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="New Memory" id="emn-ie-QpC">
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="KHD-bC-9Kk"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="dateTF" destination="j8Z-xg-vgp" id="5uZ-sg-rtV"/>
                         <outlet property="guestsTF" destination="La2-c3-UUr" id="QUu-l0-6y7"/>
@@ -227,7 +233,6 @@
                         <outlet property="titleTF" destination="UYb-fn-pyO" id="3YR-RY-2Ux"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mh2-66-pe1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2994" y="463"/>
         </scene>
@@ -243,17 +248,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eTM-YO-1re">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <items>
-                                    <barButtonItem title="Close" id="EF3-Zf-ZZT">
-                                        <connections>
-                                            <action selector="closeBtn:" destination="D1e-Wh-Iuq" id="PmU-RI-RkD"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="owC-3j-riI">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="owC-3j-riI">
                                 <rect key="frame" x="16" y="119" width="58" height="30"/>
                                 <state key="normal" title="Sign out">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -263,8 +258,25 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="dng-Tx-nex"/>
                                 </connections>
                             </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eTM-YO-1re">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="Close" id="EF3-Zf-ZZT">
+                                        <connections>
+                                            <action selector="closeBtn:" destination="D1e-Wh-Iuq" id="PmU-RI-RkD"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="owC-3j-riI" firstAttribute="top" secondItem="eTM-YO-1re" secondAttribute="bottom" constant="75" id="2Tr-4v-yLg"/>
+                            <constraint firstItem="owC-3j-riI" firstAttribute="leading" secondItem="jM0-YF-fyv" secondAttribute="leadingMargin" id="4aQ-VE-4SH"/>
+                            <constraint firstAttribute="trailing" secondItem="eTM-YO-1re" secondAttribute="trailing" id="7eT-su-fu8"/>
+                            <constraint firstItem="eTM-YO-1re" firstAttribute="leading" secondItem="jM0-YF-fyv" secondAttribute="leading" id="LhV-Ob-V72"/>
+                            <constraint firstItem="eTM-YO-1re" firstAttribute="top" secondItem="YqZ-M8-j7p" secondAttribute="bottom" id="t5h-CF-efx"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yTQ-Fh-feS" userLabel="First Responder" sceneMemberID="firstResponder"/>
