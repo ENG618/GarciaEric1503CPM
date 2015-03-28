@@ -10,7 +10,7 @@ import UIKit
 
 class MemoryViewController: UIViewController{
     
-    var memorytoEdit : Memory?
+    var memoryToEdit : Memory?
     var isEditing: Bool = false
     
     @IBOutlet var titleTF: UITextField!
@@ -21,7 +21,7 @@ class MemoryViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let currentMemory = memorytoEdit {
+        if let currentMemory = memoryToEdit {
             
             self.title = "Edit Memory"
             
@@ -92,23 +92,45 @@ class MemoryViewController: UIViewController{
         self.presentViewController(validationAlert, animated: true, completion: nil)
     }
     
+    func saveUpdatedMemory(){
+        
+        
+        
+        memoryToEdit!.memoryTitle = titleTF.text
+        memoryToEdit!.memoryDate = getDateFromString(dateTF.text)
+        memoryToEdit!.memoryGuestCount = guestsTF.text.toInt()!
+        memoryToEdit!.memoryNotes = notesTF.text
+        
+        if (validateMemory(memoryToEdit!)) {
+            if (NetworkValidator.hasConnectivity()) { // Has network connection
+                memoryToEdit!.saveInBackgroundWithBlock({
+                    (success: Bool, error: NSError!) -> Void in
+                    if (success) {
+                        println("Saved successfully")
+                    } else {
+                        self.showAlert("Please try again later")
+                        println("Error: \(error) \(error.userInfo)")
+                    }
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                })
+            } else { // Not network connection
+                memoryToEdit?.pinInBackgroundWithBlock({
+                    (success: Bool, error: NSError!) in
+                    if (success) {
+                        println("Pinned successfully")
+                    } else {
+                        println("Error: \(error) \(error.userInfo)")
+                    }
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                })
+            }
+        }
+    }
+    
     @IBAction func SaveBtn(sender: UIBarButtonItem) {
         
         if (isEditing) {
-            memorytoEdit!.memoryTitle = titleTF.text
-            memorytoEdit!.memoryDate = getDateFromString(dateTF.text)
-            memorytoEdit!.memoryGuestCount = guestsTF.text.toInt()!
-            memorytoEdit!.memoryNotes = notesTF.text
-            memorytoEdit?.pinInBackground()
-            
-            memorytoEdit!.saveInBackgroundWithBlock({
-                (success: Bool, error: NSError!) -> Void in
-                if (success) {
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                } else {
-                    println("Error: \(error) \(error.userInfo)")
-                }
-            })
+            saveUpdatedMemory()
         } else {
             // Create new memory
             var newMemory: Memory = Memory()
@@ -125,27 +147,43 @@ class MemoryViewController: UIViewController{
                 //Check network connection
                 if (NetworkValidator.hasConnectivity()) {
                     // Save directly to parse
-                    newMemory.saveInBackgroundWithBlock{
+                    newMemory.saveInBackgroundWithBlock({
                         (success: Bool, error: NSError!) -> Void in
                         if (success) { // Saved successfully
-                            self.dismissViewControllerAnimated(true, completion: nil)
-                            newMemory.pinInBackground()
-                            self.dismissViewControllerAnimated(true, completion: nil)
+                            newMemory.pinInBackgroundWithBlock({
+                                (success: Bool, error: NSError!) in
+                                if (success) {
+                                    println("Pinned successfully")
+                                } else {
+                                    println("Error: \(error) \(error.userInfo)")
+                                }
+                                self.dismissViewControllerAnimated(true, completion: nil)
+                            })
                         } else { // Something went wrong
                             println("Error: \(error) \(error.userInfo)")
-                        }
-                    }
-                } else { // No network connection
-                    // Save to localDataStore
-                    newMemory.saveEventually({
-                        (success: Bool, error: NSError!) -> Void in
-                        if (success) { // Saved successfully
-                            println("\(newMemory) synced online")
-                        } else { // Something went wrong
-                            println("Error: \(error) \(error.userInfo)")
+                            self.showAlert("Please try again later")
+                            self.dismissViewControllerAnimated(true, completion: nil)
                         }
                     })
-                    self.dismissViewControllerAnimated(true, completion: nil)
+                } else { // No network connection
+                    // Save to localDataStore
+                    newMemory.pinInBackgroundWithBlock({
+                        (success: Bool, error: NSError!) -> Void in
+                        if (success) {
+                            newMemory.saveEventually({
+                                (success: Bool, error: NSError!) -> Void in
+                                if (success) { // Saved successfully
+                                    println("\(newMemory) synced online")
+                                } else { // Something went wrong
+                                    println("Error: \(error) \(error.userInfo)")
+                                }
+                            })
+                        } else {
+                            println("Error: \(error) \(error.userInfo)")
+                        }
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    })
+                    
                 }
             }
         }

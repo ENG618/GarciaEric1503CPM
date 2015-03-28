@@ -114,7 +114,7 @@ class MemoriesViewController: UIViewController {
         // Pass the selected object to the new view controller.
         if let indexPath = self.memoriesTableView.indexPathForSelectedRow() {
             let selectedMemory = memories[indexPath.row]
-            memoryVC.memorytoEdit = selectedMemory
+            memoryVC.memoryToEdit = selectedMemory
         }
     }
     
