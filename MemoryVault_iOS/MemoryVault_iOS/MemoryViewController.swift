@@ -10,6 +10,8 @@ import UIKit
 
 class MemoryViewController: UIViewController{
     
+    var memorytoEdit : Memory?
+    
     @IBOutlet var titleTF: UITextField!
     @IBOutlet var dateTF: UITextField!
     @IBOutlet var guestsTF: UITextField!
@@ -17,6 +19,17 @@ class MemoryViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let currentMemory = memorytoEdit {
+            titleTF.text = currentMemory.memoryTitle
+            
+            let dateFormater = NSDateFormatter()
+            dateFormater.dateFormat = "MM/dd/yy"
+            dateTF.text = dateFormater.stringFromDate(currentMemory.memoryDate)
+            
+            guestsTF.text = String(currentMemory.memoryGuestCount)
+            notesTF.text = currentMemory.memoryNotes
+        }
         
         // Load current date into text field
         getCurrentDateAsString()
@@ -73,42 +86,53 @@ class MemoryViewController: UIViewController{
     }
     
     @IBAction func SaveBtn(sender: UIBarButtonItem) {
-        // Create new memory
-        var newMemory: Memory = Memory()
-        // Populate from user input
-        newMemory.memoryTitle = titleTF.text
-        newMemory.memoryDate = getDateFromString(dateTF.text)
-        if (!guestsTF.text.isEmpty) {
-            newMemory.memoryGuestCount = guestsTF.text.toInt()!
-        }
-        newMemory.memoryNotes = notesTF.text
         
-        // Check validity
-        if (validateMemory(newMemory)) {
-            //Check network connection
-            if (NetworkValidator.hasConnectivity()) {
-                // Save directly to parse
-                newMemory.saveInBackgroundWithBlock{
-                    (success: Bool, error: NSError!) -> Void in
-                    if (success) { // Saved successfully
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                        newMemory.pinInBackground()
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                    } else { // Something went wrong
-                        println("Error: \(error) \(error.userInfo)")
+        if let updatedMemory = memorytoEdit {
+            updatedMemory.memoryTitle = titleTF.text
+            updatedMemory.memoryDate = getDateFromString(dateTF.text)
+            updatedMemory.memoryGuestCount = guestsTF.text.toInt()!
+            updatedMemory.memoryNotes = notesTF.text
+            
+            updatedMemory.saveInBackground()
+            self.dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            // Create new memory
+            var newMemory: Memory = Memory()
+            // Populate from user input
+            newMemory.memoryTitle = titleTF.text
+            newMemory.memoryDate = getDateFromString(dateTF.text)
+            if (!guestsTF.text.isEmpty) {
+                newMemory.memoryGuestCount = guestsTF.text.toInt()!
+            }
+            newMemory.memoryNotes = notesTF.text
+            
+            // Check validity
+            if (validateMemory(newMemory)) {
+                //Check network connection
+                if (NetworkValidator.hasConnectivity()) {
+                    // Save directly to parse
+                    newMemory.saveInBackgroundWithBlock{
+                        (success: Bool, error: NSError!) -> Void in
+                        if (success) { // Saved successfully
+                            self.dismissViewControllerAnimated(true, completion: nil)
+                            newMemory.pinInBackground()
+                            self.dismissViewControllerAnimated(true, completion: nil)
+                        } else { // Something went wrong
+                            println("Error: \(error) \(error.userInfo)")
+                        }
                     }
+                } else { // No network connection
+                    // Save to localDataStore
+                    newMemory.saveEventually({
+                        (success: Bool, error: NSError!) -> Void in
+                        if (success) { // Saved successfully
+                            println("\(newMemory) synced online")
+                        } else { // Something went wrong
+                            println("Error: \(error) \(error.userInfo)")
+                        }
+                    })
+                    self.dismissViewControllerAnimated(true, completion: nil)
                 }
-            } else { // No network connection
-                // Save to localDataStore
-                newMemory.saveEventually({
-                    (success: Bool, error: NSError!) -> Void in
-                    if (success) { // Saved successfully
-                        println("\(newMemory) synced online")
-                    } else { // Something went wrong
-                        println("Error: \(error) \(error.userInfo)")
-                    }
-                })
-                self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
     }
