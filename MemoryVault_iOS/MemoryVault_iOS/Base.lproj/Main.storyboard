@@ -40,7 +40,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8yo-9M-nRj">
-                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="mem_cell" textLabel="5TU-Hc-2Ns" detailTextLabel="8m1-cf-lTL" rowHeight="70" style="IBUITableViewCellStyleSubtitle" id="3Xi-HN-JP2">
@@ -93,13 +93,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="8yo-9M-nRj" firstAttribute="trailing" secondItem="yxV-z9-NsT" secondAttribute="trailing" id="7BV-Ez-gX9"/>
-                            <constraint firstItem="8yo-9M-nRj" firstAttribute="top" secondItem="fxv-fE-z8d" secondAttribute="bottom" id="Cdw-o1-z9u"/>
-                            <constraint firstItem="yxV-z9-NsT" firstAttribute="leading" secondItem="8yo-9M-nRj" secondAttribute="leading" id="QTN-oN-O0z"/>
-                            <constraint firstItem="yxV-z9-NsT" firstAttribute="leading" secondItem="fBu-ej-An4" secondAttribute="leading" id="S7K-jV-xJF"/>
-                            <constraint firstItem="yxV-z9-NsT" firstAttribute="top" secondItem="8yo-9M-nRj" secondAttribute="bottom" id="cGD-iB-OLn"/>
-                            <constraint firstAttribute="trailing" secondItem="yxV-z9-NsT" secondAttribute="trailing" id="ftZ-lG-9OI"/>
-                            <constraint firstItem="yxV-z9-NsT" firstAttribute="bottom" secondItem="lLN-mg-QzD" secondAttribute="top" id="lnm-16-P0d"/>
+                            <constraint firstItem="8yo-9M-nRj" firstAttribute="trailing" secondItem="yxV-z9-NsT" secondAttribute="trailing" id="5By-Vg-hPx"/>
+                            <constraint firstItem="yxV-z9-NsT" firstAttribute="leading" secondItem="fBu-ej-An4" secondAttribute="leading" id="6Ou-e5-MSx"/>
+                            <constraint firstItem="8yo-9M-nRj" firstAttribute="top" secondItem="fBu-ej-An4" secondAttribute="top" id="D1G-rr-KjB"/>
+                            <constraint firstItem="8yo-9M-nRj" firstAttribute="leading" secondItem="yxV-z9-NsT" secondAttribute="leading" id="YXu-ZE-8gM"/>
+                            <constraint firstItem="yxV-z9-NsT" firstAttribute="top" secondItem="8yo-9M-nRj" secondAttribute="bottom" id="mMI-7n-MXv"/>
+                            <constraint firstAttribute="trailing" secondItem="8yo-9M-nRj" secondAttribute="trailing" id="ujm-Ma-UVd"/>
+                            <constraint firstItem="yxV-z9-NsT" firstAttribute="bottom" secondItem="lLN-mg-QzD" secondAttribute="top" id="zEw-Bq-LLo"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
