@@ -49,24 +49,18 @@ class MemoryViewController: UIViewController{
         return date!
     }
     
-    func validateMemory() -> Memory {
-        
-        // TODO: Validate memory
-        var validatedMemory: Memory = Memory()
+    func validateMemory(memory: Memory) -> Bool {
         
         if (titleTF.text.isEmpty){
             showAlert("Please enter a title")
-        } else {
-            validatedMemory.memoryTitle = titleTF.text
+            return false
         }
-        validatedMemory.memoryDate = getDateFromString(dateTF.text)
         if (guestsTF.text.isEmpty) {
             showAlert("Please enter number of guests")
+            return false
         }
-        validatedMemory.memoryGuestCount = guestsTF.text.toInt()!
-        validatedMemory.memoryNotes = notesTF.text
         
-        return validatedMemory
+        return true
     }
     
     func showAlert(alertMessage: String) {
@@ -77,29 +71,39 @@ class MemoryViewController: UIViewController{
     }
     
     @IBAction func SaveBtn(sender: UIBarButtonItem) {
+        // Create new memory
+        var newMemory: Memory = Memory()
+        // Populate from user input
+        newMemory.memoryTitle = titleTF.text
+        newMemory.memoryDate = getDateFromString(dateTF.text)
+        newMemory.memoryGuestCount = guestsTF.text.toInt()!
+        newMemory.memoryNotes = notesTF.text
         
-        // TODO: Validate memory
-        var newMemory: Memory = validateMemory()
-        
-        if (NetworkValidator.hasConnectivity()) {
-            
-            newMemory.saveInBackgroundWithBlock{
-                (success: Bool, error: NSError!) -> Void in
-                if (success) { // Saved successfully
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                } else { // Something went wrong
-                    println("Error: \(error) \(error.userInfo)")
+        // Check validity
+        if (validateMemory(newMemory)) {
+            //Check network connection
+            if (NetworkValidator.hasConnectivity()) {
+                // Save directly to parse
+                newMemory.saveInBackgroundWithBlock{
+                    (success: Bool, error: NSError!) -> Void in
+                    if (success) { // Saved successfully
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                        newMemory.pinInBackground()
+                    } else { // Something went wrong
+                        println("Error: \(error) \(error.userInfo)")
+                    }
                 }
+            } else { // No network connection
+                // Save to localDataStore
+                newMemory.saveEventually({
+                    (success: Bool, error: NSError!) -> Void in
+                    if (success) { // Saved successfully
+                        println("\(newMemory) synced online")
+                    } else { // Something went wrong
+                        println("Error: \(error) \(error.userInfo)")
+                    }
+                })
             }
-        } else { // No network connection
-            newMemory.saveEventually({
-                (success: Bool, error: NSError!) -> Void in
-                if (success) { // Saved successfully
-                    println("\(newMemory) synced online")
-                } else { // Something went wrong
-                    println("Error: \(error) \(error.userInfo)")
-                }
-            })
         }
         self.dismissViewControllerAnimated(true, completion: nil)
     }

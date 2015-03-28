@@ -12,7 +12,8 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let primaryColor = UIColor(red: 244/255, green: 67/255, blue: 54/255, alpha: 1.0)
+    let iconColor = UIColor.whiteColor()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -30,8 +31,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set default ACL to user only access.
         PFACL.setDefaultACL(PFACL(), withAccessForCurrentUser: true)
         
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         
-//        var controller = PFQueryTableViewController(className: "Memories")
+        let navBarAppearance = UINavigationBar.appearance()
+        
+        navBarAppearance.barTintColor = primaryColor
+        navBarAppearance.tintColor = iconColor
+        
+        let toolBarApperance = UIToolbar.appearance()
+        
+        toolBarApperance.barTintColor = primaryColor
+        toolBarApperance.tintColor = iconColor
         
         return true
     }
