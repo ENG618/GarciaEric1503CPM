@@ -37,17 +37,21 @@ class MemoriesViewController: UIViewController {
                 if error == nil {
                     // The find succeeded.
                     // println("Successfully retrieved \(objects.count) memories.")
-                    // Clear current list
-                    self.memories = [Memory]()
-                    // Do something with the found objects
-                    for memory in objects {
-                        let currentMemory: Memory = memory as Memory
-                        // Save to localDataStore
-                        currentMemory.pinInBackground()
-                        println("\(currentMemory.memoryTitle) from Parse")
-                        // Append to current
-                        self.memories.append(currentMemory)
-                    }
+                    
+                    Memory.unpinAllInBackground(self.memories, block: {
+                        (success: Bool, error: NSError!) -> Void in
+                        // Clear current list
+                        self.memories = [Memory]()
+                        // Do something with the found objects
+                        for memory in objects {
+                            let currentMemory: Memory = memory as Memory
+                            // Save to localDataStore
+                            currentMemory.pinInBackground()
+                            println("\(currentMemory.memoryTitle) from Parse")
+                            // Append to current
+                            self.memories.append(currentMemory)
+                        }
+                    })
                     // Notify tableView to reload data
                     self.memoriesTableView.reloadData()
                 } else {
@@ -63,7 +67,7 @@ class MemoriesViewController: UIViewController {
             var connectionAlert = UIAlertController(title: "No Available Network!!", message: "Memories will be synced with cached data", preferredStyle: UIAlertControllerStyle.Alert)
             // Add Okay button
             connectionAlert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: { action in
-            
+                
                 println("Okay from alert")
                 // Load local query
                 Memory.memoryQueryFromLocal().findObjectsInBackgroundWithBlock{
@@ -101,7 +105,7 @@ class MemoriesViewController: UIViewController {
     }
     
     /*
-// MARK: - Navigation
+    // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

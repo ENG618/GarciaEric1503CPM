@@ -11,16 +11,14 @@ import Foundation
 
 class Memory: PFObject, PFSubclassing {
     
+    let TAG = "Local memories"
+    
     // Constants for row titles
     let TITLE: String = "Title"
     let DATE: String = "Date"
     let GUESTS: String = "Guests"
     let NOTES: String = "Notes"
-    var CREATED_AT: String {
-        get {
-            return "createdAt"
-        }
-    }
+    
     
     
     var memoryTitle: String {
