@@ -33,15 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         
-        let navBarAppearance = UINavigationBar.appearance()
-        
-        navBarAppearance.barTintColor = primaryColor
-        navBarAppearance.tintColor = iconColor
-        
-        let toolBarApperance = UIToolbar.appearance()
-        
-        toolBarApperance.barTintColor = primaryColor
-        toolBarApperance.tintColor = iconColor
+        setAppStyle()
         
         return true
     }
@@ -66,6 +58,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func setAppStyle() {
+        let navBarAppearance = UINavigationBar.appearance()
+        
+        navBarAppearance.barTintColor = primaryColor
+        navBarAppearance.tintColor = iconColor
+        
+        let toolBarApperance = UIToolbar.appearance()
+        
+        toolBarApperance.barTintColor = primaryColor
+        toolBarApperance.tintColor = iconColor
     }
 
 
