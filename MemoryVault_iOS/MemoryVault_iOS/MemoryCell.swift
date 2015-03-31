@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MemoryViewCell: UITableViewCell {
+class MemoryCell: UITableViewCell {
     
     @IBOutlet var memoryTitle: UILabel!
     @IBOutlet var memoryDate: UILabel!

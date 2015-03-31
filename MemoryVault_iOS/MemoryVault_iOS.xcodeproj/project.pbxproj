@@ -36,8 +36,8 @@
 		5C5E66051AB009E3008D8BD3 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E66041AB009E3008D8BD3 /* Memory.swift */; };
 		5CC581C91AC20AC80071F35A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC581C81AC20AC80071F35A /* Reachability.m */; };
 		5CC581CD1AC3510E0071F35A /* NetworkValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC581CC1AC3510E0071F35A /* NetworkValidator.swift */; };
-		5CF320AA1AB3CD110031171D /* MemoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CF320A91AB3CD110031171D /* MemoryTableViewCell.xib */; };
-		5CF320AE1AB3CE250031171D /* MemoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF320AD1AB3CE250031171D /* MemoryViewCell.swift */; };
+		5CF320AA1AB3CD110031171D /* MemoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CF320A91AB3CD110031171D /* MemoryCell.xib */; };
+		5CF320AE1AB3CE250031171D /* MemoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF320AD1AB3CE250031171D /* MemoryCell.swift */; };
 		5CF320B11AB3DD920031171D /* MemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF320B01AB3DD920031171D /* MemoryViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -87,8 +87,8 @@
 		5CC581C71AC20AC80071F35A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		5CC581C81AC20AC80071F35A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		5CC581CC1AC3510E0071F35A /* NetworkValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkValidator.swift; sourceTree = "<group>"; };
-		5CF320A91AB3CD110031171D /* MemoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MemoryTableViewCell.xib; sourceTree = "<group>"; };
-		5CF320AD1AB3CE250031171D /* MemoryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryViewCell.swift; sourceTree = "<group>"; };
+		5CF320A91AB3CD110031171D /* MemoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MemoryCell.xib; sourceTree = "<group>"; };
+		5CF320AD1AB3CE250031171D /* MemoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryCell.swift; sourceTree = "<group>"; };
 		5CF320B01AB3DD920031171D /* MemoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -246,8 +246,8 @@
 		5CF320AF1AB3D1180031171D /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				5CF320A91AB3CD110031171D /* MemoryTableViewCell.xib */,
-				5CF320AD1AB3CE250031171D /* MemoryViewCell.swift */,
+				5CF320A91AB3CD110031171D /* MemoryCell.xib */,
+				5CF320AD1AB3CE250031171D /* MemoryCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -341,7 +341,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CF320AA1AB3CD110031171D /* MemoryTableViewCell.xib in Resources */,
+				5CF320AA1AB3CD110031171D /* MemoryCell.xib in Resources */,
 				5C22E9631AACFFFE00C02C7C /* Main.storyboard in Resources */,
 				5C22E9681AACFFFE00C02C7C /* LaunchScreen.xib in Resources */,
 				5C22E9651AACFFFE00C02C7C /* Images.xcassets in Resources */,
@@ -366,7 +366,7 @@
 				5C22E9A61AAD5D9800C02C7C /* DispatchViewController.swift in Sources */,
 				5C5E66051AB009E3008D8BD3 /* Memory.swift in Sources */,
 				5C22E95E1AACFFFE00C02C7C /* AppDelegate.swift in Sources */,
-				5CF320AE1AB3CE250031171D /* MemoryViewCell.swift in Sources */,
+				5CF320AE1AB3CE250031171D /* MemoryCell.swift in Sources */,
 				5C22E9AC1AAFED9400C02C7C /* SettingsViewController.swift in Sources */,
 				5CC581C91AC20AC80071F35A /* Reachability.m in Sources */,
 				5CC581CD1AC3510E0071F35A /* NetworkValidator.swift in Sources */,

@@ -24,7 +24,7 @@ class MemoriesViewController: UIViewController {
         let updateTimer = NSTimer.scheduledTimerWithTimeInterval(300.0, target: self, selector: "updateMemories", userInfo: nil, repeats: true)
         
         // Register custom cell
-        var nib = UINib(nibName: "MemoryViewCell", bundle: nil)
+        var nib = UINib(nibName: "MemoryCell", bundle: nil)
         memoriesTableView.registerNib(nib, forCellReuseIdentifier: "memoryCell")
     }
     
@@ -134,10 +134,10 @@ extension MemoriesViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Custom cell
-        // var cell = tableView.dequeueReusableCellWithIdentifier("memoryCell", forIndexPath: indexPath) as MemoryViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("memoryCell", forIndexPath: indexPath) as MemoryCell
         
         // Standard cell
-        var cell = tableView.dequeueReusableCellWithIdentifier(self.cellIdentifier, forIndexPath: indexPath) as UITableViewCell
+        // var cell = tableView.dequeueReusableCellWithIdentifier(self.cellIdentifier, forIndexPath: indexPath) as UITableViewCell
         
         if (memories.count > 0) {
             var currentMemory: Memory = memories[indexPath.row]
@@ -146,13 +146,11 @@ extension MemoriesViewController: UITableViewDataSource {
             var formater:NSDateFormatter = NSDateFormatter()
             formater.dateFormat = "MM/dd/yy"
             
-            var memoryCell = tableView.dequeueReusableCellWithIdentifier("memoryCell") as MemoryViewCell
-            
             // Custom cell
-            memoryCell.memoryTitle.text = currentMemory.memoryTitle
+            cell.memoryTitle.text = currentMemory.memoryTitle
             
-            memoryCell.memoryDate.text = formater.stringFromDate(currentMemory.memoryDate)
-            memoryCell.memoryGuests.text = String(currentMemory.memoryGuestCount)
+            cell.memoryDate.text = formater.stringFromDate(currentMemory.memoryDate)
+            cell.memoryGuests.text = String(currentMemory.memoryGuestCount)
 
             /*
             // Standard cell
