@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D113c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D127a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -63,7 +63,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="FdK-vb-7sk" kind="presentation" modalPresentationStyle="formSheet" id="j7k-hK-pbS"/>
+                                            <segue destination="FdK-vb-7sk" kind="presentation" identifier="detailsSegue" modalPresentationStyle="formSheet" id="j7k-hK-pbS"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -78,7 +78,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="lCw-DG-y2t"/>
                                     <barButtonItem title="Settings" id="SRJ-ca-5xT">
                                         <connections>
-                                            <segue destination="D1e-Wh-Iuq" kind="presentation" modalPresentationStyle="formSheet" id="UOo-wQ-1Bd"/>
+                                            <segue destination="D1e-Wh-Iuq" kind="presentation" identifier="settingsSegue" modalPresentationStyle="formSheet" id="UOo-wQ-1Bd"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="237-ZY-51S"/>
@@ -106,7 +106,7 @@
                     <navigationItem key="navigationItem" id="bEQ-2q-Nyb">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="1h1-Hp-d6O">
                             <connections>
-                                <segue destination="FdK-vb-7sk" kind="presentation" modalPresentationStyle="formSheet" id="q4w-bY-LVw"/>
+                                <segue destination="FdK-vb-7sk" kind="presentation" identifier="addMemorySegue" modalPresentationStyle="formSheet" id="q4w-bY-LVw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

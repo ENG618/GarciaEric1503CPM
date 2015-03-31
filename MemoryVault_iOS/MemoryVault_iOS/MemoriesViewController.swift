@@ -20,7 +20,8 @@ class MemoriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let updateTimer = NSTimer.scheduledTimerWithTimeInterval(15.0, target: self, selector: "updateMemories", userInfo: nil, repeats: true)
+        // auto refresh ever 5 min
+        let updateTimer = NSTimer.scheduledTimerWithTimeInterval(300.0, target: self, selector: "updateMemories", userInfo: nil, repeats: true)
         
         // Register custom cell
         var nib = UINib(nibName: "MemoryViewCell", bundle: nil)
@@ -108,12 +109,14 @@ class MemoriesViewController: UIViewController {
     
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        var memoryVC = segue.destinationViewController as MemoryViewController
-        // Pass the selected object to the new view controller.
-        if let indexPath = self.memoriesTableView.indexPathForSelectedRow() {
-            let selectedMemory = memories[indexPath.row]
-            memoryVC.memoryToEdit = selectedMemory
+        if segue.identifier == "detailsSegue" {
+            // Get the new view controller using segue.destinationViewController.
+            var memoryVC = segue.destinationViewController as MemoryViewController
+            // Pass the selected object to the new view controller.
+            if let indexPath = self.memoriesTableView.indexPathForSelectedRow() {
+                let selectedMemory = memories[indexPath.row]
+                memoryVC.memoryToEdit = selectedMemory
+            }
         }
     }
 }
@@ -142,16 +145,20 @@ extension MemoriesViewController: UITableViewDataSource {
             // Date formater
             var formater:NSDateFormatter = NSDateFormatter()
             formater.dateFormat = "MM/dd/yy"
-            /*
-            // Custom cell
-            cell.memoryTitle.text = currentMemory.memoryTitle
             
-            cell.memoryDate.text = formater.stringFromDate(currentMemory.memoryDate)
-            cell.memoryGuests.text = currentMemory.memoryGuestCount
-            */
+            var memoryCell = tableView.dequeueReusableCellWithIdentifier("memoryCell") as MemoryViewCell
+            
+            // Custom cell
+            memoryCell.memoryTitle.text = currentMemory.memoryTitle
+            
+            memoryCell.memoryDate.text = formater.stringFromDate(currentMemory.memoryDate)
+            memoryCell.memoryGuests.text = String(currentMemory.memoryGuestCount)
+
+            /*
             // Standard cell
             cell.textLabel?.text = currentMemory.memoryTitle
             cell.detailTextLabel?.text = formater.stringFromDate(currentMemory.memoryDate)
+            */
         }
         
         
